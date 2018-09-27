@@ -19,6 +19,8 @@ namespace FrontMobileApithon.Droid.Implementations
         {
             base.OnCreate(savedInstanceState);
 
+            SetContentView(Resource.Layout.accounts);
+
             // Create your application here
         }
     }

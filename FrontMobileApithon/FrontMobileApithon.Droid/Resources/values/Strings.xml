@@ -2,4 +2,15 @@
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">FrontMobileApithon.Droid</string>
+  <string name="car_prompt">Tipo de documento de identidad</string>
+  <string-array name="document_type">
+    <item>Scorpio</item>
+    <item>xylo</item>
+    <item>Innovo</item>
+    <item>Benz</item>
+    <item>BMW</item>
+    <item>Audi</item>
+    <item>Jaguar</item>
+    <item>ferrari</item>
+  </string-array>
 </resources>

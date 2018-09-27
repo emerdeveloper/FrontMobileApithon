@@ -28,6 +28,22 @@ namespace FrontMobileApithon.Droid
 		{
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f0b0000
+			public const int document_type = 2131427328;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -814,7 +830,7 @@ namespace FrontMobileApithon.Droid
 			public const int underline = 2131361813;
 			
 			// aapt resource value: 0x7f0a0020
-			public const int webView = 2131361824;
+			public const int webViewAPI = 2131361824;
 			
 			// aapt resource value: 0x7f0a000b
 			public const int wide = 2131361803;
@@ -950,6 +966,9 @@ namespace FrontMobileApithon.Droid
 			
 			// aapt resource value: 0x7f04001b
 			public const int app_name = 2130968603;
+			
+			// aapt resource value: 0x7f04001c
+			public const int car_prompt = 2130968604;
 			
 			// aapt resource value: 0x7f040008
 			public const int common_google_play_services_enable_button = 2130968584;

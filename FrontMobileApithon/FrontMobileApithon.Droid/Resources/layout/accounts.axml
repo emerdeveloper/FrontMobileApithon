@@ -48,14 +48,14 @@
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:id="@+id/linearLayout2">
         <TextView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:layout_weight="0.7"
             android:id="@+id/declarate"
             android:textSize="15dp"
@@ -66,13 +66,14 @@
         <Switch
             android:id="@+id/simpleSwitch"
             android:layout_width="0dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="0.3" />
     </LinearLayout>
     <Button
         android:text="CONTINUAR"
         android:layout_width="match_parent"
-        android:layout_height="61.5dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
@@ -87,7 +88,7 @@
     <Button
         android:text="SALIR"
         android:layout_width="match_parent"
-        android:layout_height="61.5dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
