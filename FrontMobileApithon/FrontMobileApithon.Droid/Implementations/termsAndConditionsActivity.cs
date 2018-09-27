@@ -15,11 +15,21 @@ namespace FrontMobileApithon.Droid.Implementations
     [Activity(Label = "termsAndConditionsActivity")]
     public class termsAndConditionsActivity : Activity
     {
+        ImageButton backBtn;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
+            SetContentView(Resource.Layout.termsConditions);
+
+            backBtn = FindViewById<ImageButton>(Resource.Id.backBtn);
+            backBtn.Click += BackBtn_Click;           
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.OnBackPressed();
         }
     }
 }
