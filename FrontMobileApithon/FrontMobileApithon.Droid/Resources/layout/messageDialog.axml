@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_shape"
+        android:layout_margin="30dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp">
+        <ImageView
+            android:id="@+id/dialogImageView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_notification_bell_black" />
+        <AppFilialesExterior.Droid.Controls.CustTextView
+            app:CustomFont="OpenSans_Bold"
+            android:id="@+id/titleMessageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            style="@style/title_message_dialog"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_marginBottom="5dp" />
+        <AppFilialesExterior.Droid.Controls.CustTextView
+            app:CustomFont="OpenSans_Regular"
+            android:id="@+id/messageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Este mensaje"
+            android:gravity="center"
+            style="@style/text_view_message_dialog"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp" />
+        <AppFilialesExterior.Droid.Controls.CustButton
+            app:CustomFont="Nunito_Bold"
+            android:id="@+id/acceptButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_yellow_button"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:theme="@style/text_b_blue"
+            android:layout_marginBottom="10dp" />
+        <AppFilialesExterior.Droid.Controls.CustButton
+            app:CustomFont="Nunito_Bold"
+            android:id="@+id/secondaryAcceptButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_white_button"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="6dp"
+            android:theme="@style/text_b_blue"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>
