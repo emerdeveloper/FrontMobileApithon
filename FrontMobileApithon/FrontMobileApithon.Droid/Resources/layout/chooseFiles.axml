@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@android:style/Theme.Material.Dialog.NoActionBar"
     android:minWidth="25px"
     android:minHeight="25px">
     <LinearLayout
@@ -44,40 +45,38 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/logo_bancolombia"
-            android:src="@mipmap/bancolombialogo"
+            android:src="@drawable/logo"
             android:layout_marginRight="0.0dp" />
         <ImageView
             android:layout_width="5.5dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/logo_bancolombia"
-            android:src="@mipmap/bancolombialogo"
+            android:src="@drawable/logo"
             android:layout_marginRight="0.0dp" />
         <ImageView
             android:layout_width="5.5dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/logo_bancolombia"
-            android:src="@mipmap/bancolombialogo"
+            android:src="@drawable/logo"
             android:layout_marginRight="0.0dp" />
         <ImageView
             android:layout_width="5.5dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/logo_bancolombia"
-            android:src="@mipmap/bancolombialogo"
+            android:src="@drawable/logo"
             android:layout_marginRight="0.0dp" />
         <ImageView
             android:layout_width="5.5dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/logo_bancolombia"
-            android:src="@mipmap/bancolombialogo"
+            android:src="@drawable/logo"
             android:layout_marginRight="0.0dp" />
     </LinearLayout>
     <ScrollView
-        android:minWidth="@dimen/default_min_width"
-        android:minHeight="@dimen/default_min_height"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:layout_height="0dp"
@@ -128,9 +127,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="0.15"
                         android:layout_width="fill_parent"
-                        android:background="@android:color/transparent"
-                        app:vpiPageColor="@color/pin_text_color"
-                        app:vpiFillColor="@color/title_text_color" />
+                        android:background="@android:color/transparent" />
                 </LinearLayout>
                 <ImageButton
                     android:layout_width="0dp"
@@ -156,14 +153,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:id="@+id/logo_bancolombia"
-                    android:src="@mipmap/bancolombialogo"
-                    android:layout_marginRight="0.0dp" />
-                <ImageView
-                    android:layout_width="5.5dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/logo_bancolombia"
-                    android:src="@mipmap/bancolombialogo"
+                    android:src="@drawable/logo"
                     android:layout_marginRight="0.0dp" />
             </LinearLayout>
             <Button
