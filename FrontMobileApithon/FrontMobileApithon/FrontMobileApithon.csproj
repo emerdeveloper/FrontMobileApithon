@@ -34,7 +34,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Request\Aggregation\Datum.cs" />
+    <Compile Include="Models\Request\Aggregation\Document.cs" />
+    <Compile Include="Models\Request\Aggregation\Header.cs" />
+    <Compile Include="Models\Request\Aggregation\RootObject.cs" />
+    <Compile Include="Models\Request\Client\Datum.cs" />
+    <Compile Include="Models\Request\Client\getClientRequest.cs" />
+    <Compile Include="Models\Request\Client\Header.cs" />
+    <Compile Include="Models\Request\Movements\Datum.cs" />
+    <Compile Include="Models\Request\Movements\Header.cs" />
+    <Compile Include="Models\Request\Movements\RootObject.cs" />
+    <Compile Include="Models\Request\UpdateClient\Datum.cs" />
+    <Compile Include="Models\Request\UpdateClient\UpdateClientRequest.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\Responses\Aggregation\Datum.cs" />
+    <Compile Include="Models\Responses\Aggregation\Header.cs" />
+    <Compile Include="Models\Responses\Aggregation\RootObject.cs" />
+    <Compile Include="Models\Responses\Client\Datum.cs" />
+    <Compile Include="Models\Responses\Client\getClientResponse.cs" />
+    <Compile Include="Models\Responses\GetTokenResponse.cs" />
+    <Compile Include="Models\Responses\Movements\Datum.cs" />
+    <Compile Include="Models\Responses\Movements\Header.cs" />
+    <Compile Include="Models\Responses\Movements\RootObject.cs" />
+    <Compile Include="Models\Responses\UpdateClient\Datum.cs" />
+    <Compile Include="Models\Responses\UpdateClient\Header.cs" />
+    <Compile Include="Models\Responses\UpdateClient\UpdateClientResponse.cs" />
     <Compile Include="Models\SearchRequest.cs" />
     <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

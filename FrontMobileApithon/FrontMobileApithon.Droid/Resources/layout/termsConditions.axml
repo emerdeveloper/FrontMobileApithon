@@ -59,7 +59,7 @@
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
                 android:id="@+id/titleText"
-                android:layout_weight="0.1"
+                android:layout_weight="0.2"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:textColor="#00448c" />
@@ -67,7 +67,7 @@
                 android:text="jngsijfnñjafnvñjfnsvoñjanfsjvnasfjgnajfkdngjñadfnjgandfijgnadfjgnadfjngbiuafjdnguianfbjgoiasfguiajfhguihdfuiguifdhguihdfiughaduifhguiadfhguihdfiughaduifjguiadfhguiadfhguihadfughadiufjgiuadfhgiuadhfguiadhfuighadfiughauidfuiaf"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.9"
+                android:layout_weight="0.8"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"

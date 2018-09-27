@@ -10,10 +10,11 @@ using Android.Runtime;
 using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
+using static Android.Support.V4.View.ViewPager;
 
 namespace FrontMobileApithon.Droid.Implementations.Files
 {
-    public class CarouselAdapter : PagerAdapter
+    public class CarouselAdapter : PagerAdapter, IOnPageChangeListener
     {
         Context context;
         int[] folderList = { };
@@ -43,6 +44,8 @@ namespace FrontMobileApithon.Droid.Implementations.Files
             imageView.SetScaleType(ImageView.ScaleType.FitCenter);
             imageView.SetImageResource(folderList[position]);
 
+            Toast.MakeText(context, position + "", ToastLength.Short).Show();
+
             ((ViewPager)container).AddView(imageView, 0);
 
             return imageView;
@@ -51,6 +54,21 @@ namespace FrontMobileApithon.Droid.Implementations.Files
         public override void DestroyItem(ViewGroup container, int position, Java.Lang.Object @object)
         {
             ((ViewPager)container).RemoveView((ImageView)@object);
+        }
+
+        public void OnPageScrollStateChanged(int state)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnPageScrolled(int position, float positionOffset, int positionOffsetPixels)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnPageSelected(int position)
+        {
+            throw new NotImplementedException();
         }
     }
 }

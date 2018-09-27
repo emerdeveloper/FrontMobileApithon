@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorActivity">#ffffff</color>
+  <color name="colorPrimary">#3F51B5</color>
+  <color name="colorPrimaryDark">#ffffff</color>
+  <color name="colorAccent">#FF4081</color>
+  <color name="progressColor">#aeaca9</color>
+  <color name="colorControlNormal">#aeaca9</color>
+  <color name="colorControlActivated">#0C94B2</color>
+  <color name="passwordInputLineColor">#DDDDDD</color>
+  <color name="buttomLineColor">#797979</color>
+  <color name="bottomMessageBackground">#CCCCCC</color>
+  <color name="errorTextColor">#FF0000</color>
+  <color name="hint_color">#42000000</color>
+  <color name="general_solid_background">#dadce8</color>
+  <color name="hello_text">#f5c337</color>
+  <color name="text_label_input">#7F8389</color>
+  <color name="colorWhite">#ffffff</color>
+  <color name="colorTitleApp">#000000</color>
+  <color name="colorBGDashboard">#F5F7F9</color>
+  <color name="colorBGTransfer">#F1F3F8</color>
+  <color name="colorLinePrimary">#2A5B97</color>
+  <color name="general_green">#92FC4D</color>
+  <color name="general_red">#E30620</color>
+
+  <!--chart inside-->
+  <color name="available">#F4D201</color>
+  <color name="debt_total">#797A79</color>
+  <color name="danger">#DD280D</color>
+  <!--chart outline-->
+  <color name="value_stroke_color">#A1A0A1</color>
+  <color name="back_stroke_color">#F4D201</color>
+
+  <!--Mood Colors-->
+  <color name="bg_dialog_color">#CCCED1D6</color>
+  <color name="general_blue">#00448C</color>
+  <color name="general_yellow">#F5C337</color>
+  <color name="text_black">#333333</color>
+  <color name="text_gray_1">#888888</color>
+  <color name="text_gray_b">#B5B5B5</color>
+  <color name="text_gray_c">#ECECEC</color>	
+  <color name="text_subtitles">#727272</color>
+  <color name="text_b_blue">#1E376E</color>
+  <color name="colorTextError">#E4051F</color>
+</resources>

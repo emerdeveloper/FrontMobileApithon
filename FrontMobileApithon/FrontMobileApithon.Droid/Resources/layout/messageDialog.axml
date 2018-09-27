@@ -20,9 +20,8 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/ic_notification_bell_black" />
-        <AppFilialesExterior.Droid.Controls.CustTextView
-            app:CustomFont="OpenSans_Bold"
-            android:id="@+id/titleMessageTextView"
+      <TextView
+          android:id="@+id/titleMessageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title"
@@ -31,9 +30,8 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:layout_marginBottom="5dp" />
-        <AppFilialesExterior.Droid.Controls.CustTextView
-            app:CustomFont="OpenSans_Regular"
-            android:id="@+id/messageTextView"
+      <TextView
+          android:id="@+id/messageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Este mensaje"
@@ -41,8 +39,7 @@
             style="@style/text_view_message_dialog"
             android:layout_gravity="center"
             android:layout_marginBottom="15dp" />
-        <AppFilialesExterior.Droid.Controls.CustButton
-            app:CustomFont="Nunito_Bold"
+      <TextView
             android:id="@+id/acceptButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,8 +48,7 @@
             android:layout_marginRight="10dp"
             android:theme="@style/text_b_blue"
             android:layout_marginBottom="10dp" />
-        <AppFilialesExterior.Droid.Controls.CustButton
-            app:CustomFont="Nunito_Bold"
+        <TextView
             android:id="@+id/secondaryAcceptButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
