@@ -17,9 +17,9 @@ using static Android.App.ActionBar;
 
 namespace FrontMobileApithon.Droid
 {
-    [Activity (Label = "Apithon", MainLauncher = true, Icon = "@drawable/icon")]
-	public class MainActivity : Activity
-	{
+    [Activity(Label = "Apithon", MainLauncher = true, Icon = "@drawable/icon")]
+    public class MainActivity : Activity
+    {
         string urlLogin = "https://sbapi.bancolombia.com/security/oauth-otp/oauth2/authorize?client_id=16ebf6cc-38f7-497f-b064-7ca1d562727a&response_type=code&scope=Customer-financial:read:user Customer-ubication:read:user Customer-basic:read:user  Customer-document:write:user&redirect_uri=http://localhost:3000/code";
         static readonly string TAG = "MainActivity";
         internal static readonly string CHANNEL_ID = "my_notification_channel";
@@ -43,7 +43,7 @@ namespace FrontMobileApithon.Droid
         #region Constructor
         public MainActivity()
         {
-           /* ApiService = new ApiConsumer();*/
+            /* ApiService = new ApiConsumer();*/
             CheckConnection = new CheckConnection();
             Init(this);
         }
@@ -68,11 +68,11 @@ namespace FrontMobileApithon.Droid
         }
         #endregion
 
-        protected override void OnCreate (Bundle bundle)
-		{
-			base.OnCreate (bundle);
-            
-			SetContentView (Resource.Layout.activity_main);
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+
+            SetContentView(Resource.Layout.activity_main);
 
             //subscribePush();
             // IsPlayServicesAvailable();
@@ -131,9 +131,9 @@ namespace FrontMobileApithon.Droid
             Intent intent = new Intent(this, typeof(termsAndConditionsActivity));
             StartActivity(intent);
         }
-       
+
     }
-    internal class WebViewClientClass :  WebViewClient
+    internal class WebViewClientClass : WebViewClient
     {
         Activity mActivity;
         WebView webviewApi;
@@ -174,82 +174,91 @@ namespace FrontMobileApithon.Droid
 
         public void CallApi(string code)
         {
-            progressbar.Visibility = Android.Views.ViewStates.Visible;
-            contentWebview.Visibility = Android.Views.ViewStates.Gone;
+            progressbar.Visibility = ViewStates.Visible;
+            contentWebview.Visibility = ViewStates.Gone;
             Task.Factory.StartNew(() =>
             {
-                var response =  ApiService.PostGetToken(code);
+                var response = ApiService.PostGetToken(code);
 
                 if (!response.Result.IsSuccess)
-            {
-                    progressbar.Visibility = Android.Views.ViewStates.Gone;
-                    contentWebview.Visibility = Android.Views.ViewStates.Visible;
-                    Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
-                AlertDialog alert = dialog.Create();
-                alert.SetTitle("ALERTA");
-                alert.SetMessage("Hubo un error inesperado");
-                alert.SetButton("ACEPTAR", (c, ev) =>
-                { });
-                alert.SetButton2("CANCEL", (c, ev) => { });
-                alert.Show();
-            }
-
-                var access_token = ((GetTokenResponse) response.Result.Result).access_token;
-
-            //Armando el objeto para consumir API movements
-            var header = new Models.Request.Movements.Header
-            {
-                token = access_token,
-            };
-
-            var datum = new Models.Request.Movements.Datum
-            {
-                header = header,
-            };
-
-            var requestModel = new Models.Request.Movements.RootObject
-            {
-                data = new List<Models.Request.Movements.Datum>()
-            };
-            requestModel.data.Add(datum);
-           
-            var ResponseValiateStatement =  ApiService.Post<Models.Request.Movements.RootObject>(
-                                            access_token, 
-                                            Constants.Url.MovementsServicePrefix, 
-                                            requestModel);
-
-                if (!response.Result.IsSuccess)
-            {
-                    progressbar.Visibility = Android.Views.ViewStates.Gone;
-                    Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
-                AlertDialog alert = dialog.Create();
-                alert.SetTitle("ALERTA");
-                alert.SetMessage("Hubo un error inesperado");
-                alert.SetButton("ACEPTAR", (c, ev) =>
-                { });
-                alert.SetButton2("CANCEL", (c, ev) => { });
-                alert.Show();
-                return;
-            }
-
-                progressbar.Visibility = Android.Views.ViewStates.Gone;
-                contentWebview.Visibility = Android.Views.ViewStates.Visible;
-                var Movements = (Models.Responses.Movements.RootObject)response.Result.Result;
-            if (Movements.data[0].header.Status.Equals("200"))
-            {
-                if (Movements.data[0].declaration)
                 {
-                    //TODO: Crear intent para que salga que debe declarar
-
-                    intent = new Intent(mActivity, typeof(AccountsActivity));
-                    mActivity.StartActivity(intent);
-                    return;
+                    mActivity.RunOnUiThread(() =>
+                    {
+                        progressbar.Visibility = ViewStates.Gone;
+                        contentWebview.Visibility = ViewStates.Visible;
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
+                        AlertDialog alert = dialog.Create();
+                        alert.SetTitle("ALERTA");
+                        alert.SetMessage("Hubo un error inesperado");
+                        alert.SetButton("ACEPTAR", (c, ev) =>
+                        { });
+                        alert.SetButton2("CANCEL", (c, ev) => { });
+                        alert.Show();
+                    });
                 }
 
-                // TODO: No declara
-            }
+                var access_token = ((GetTokenResponse)response.Result.Result).access_token;
+
+                //Armando el objeto para consumir API movements
+                var header = new Models.Request.Movements.Header
+                {
+                    token = access_token,
+                };
+
+                var datum = new Models.Request.Movements.Datum
+                {
+                    header = header,
+                };
+
+                var requestModel = new Models.Request.Movements.RootObject
+                {
+                    data = new List<Models.Request.Movements.Datum>()
+                };
+                requestModel.data.Add(datum);
+
+                var ResponseValiateStatement = ApiService.PostGetMovements(
+                                                access_token,
+                                                Constants.Url.MovementsServicePrefix,
+                                                requestModel);
+
+                if (!ResponseValiateStatement.Result.IsSuccess)
+                {
+                    mActivity.RunOnUiThread(() =>
+                    {
+                        progressbar.Visibility = Android.Views.ViewStates.Gone;
+                        Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
+                        AlertDialog alert = dialog.Create();
+                        alert.SetTitle("ALERTA");
+                        alert.SetMessage("Hubo un error inesperado");
+                        alert.SetButton("ACEPTAR", (c, ev) =>
+                        { });
+                        alert.SetButton2("CANCEL", (c, ev) => { });
+                        alert.Show();
+                        return;
+                    });
+                }
+
+                mActivity.RunOnUiThread(() =>
+                {
+                    progressbar.Visibility = Android.Views.ViewStates.Gone;
+                contentWebview.Visibility = Android.Views.ViewStates.Visible;
                 });
-                      
+                var Movements = (Models.Responses.Movements.RootObject)ResponseValiateStatement.Result.Result;
+                if (Movements.data[0].header.Status.Equals("200"))
+                {
+                    if (Movements.data[0].declaration)
+                    {
+                        //TODO: Crear intent para que salga que debe declarar
+
+                        intent = new Intent(mActivity, typeof(AccountsActivity));
+                        mActivity.StartActivity(intent);
+                        return;
+                    }
+
+                    // TODO: No declara
+                }
+            });
+
         }
     }
 }
