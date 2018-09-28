@@ -19,6 +19,8 @@ namespace FrontMobileApithon.Droid.Implementations
     [Activity(Label = "UpdateDataActivity")]
     public class UpdateDataActivity : Activity
     {
+        LinearLayout contentLinearLayout;
+        LinearLayout progressBar;
 
         EditText name, lastname, documentId, email, address, city, cellphone, work;
         ApiConsumer ApiService;
@@ -34,11 +36,16 @@ namespace FrontMobileApithon.Droid.Implementations
             email = FindViewById<EditText>(Resource.Id.email);
             address = FindViewById<EditText>(Resource.Id.address);
             city = FindViewById<EditText>(Resource.Id.city);
+            city.Text = "Medellín";
             cellphone = FindViewById<EditText>(Resource.Id.cellphone);
             work = FindViewById<EditText>(Resource.Id.work);
+            work.Text = "Empleado";
 
             Button updateBtn = FindViewById<Button>(Resource.Id.updateBtn);
             updateBtn.Click += UpdateBtn_Click;
+
+            contentLinearLayout = FindViewById<LinearLayout>(Resource.Id.contentLinearLayout);
+            progressBar = FindViewById<LinearLayout>(Resource.Id.ProgressBar);
 
             //SEtear Datos a campos
             name.Text = HomeActivity.GetInstance().clientInfo.data[0].fullName;
@@ -46,15 +53,12 @@ namespace FrontMobileApithon.Droid.Implementations
             email.Text = HomeActivity.GetInstance().clientInfo.data[0].email;
             address.Text = HomeActivity.GetInstance().clientInfo.data[0].address;
             cellphone.Text = HomeActivity.GetInstance().clientInfo.data[0].cellPhone;
-
-        }
+			progressBar.Visibility = ViewStates.Gone;
+			contentLinearLayout.Visibility = ViewStates.Visible;
+		}
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-
-
-			//CallApi();
-
 			if (!String.IsNullOrEmpty(email.Text) && !String.IsNullOrEmpty(address.Text) && !String.IsNullOrEmpty(city.Text) && !String.IsNullOrEmpty(cellphone.Text) && !String.IsNullOrEmpty(city.Text) && !String.IsNullOrEmpty(work.Text))
 			{
 				/*AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -88,11 +92,11 @@ namespace FrontMobileApithon.Droid.Implementations
 
         public void CallApi()
         {
-            /*progressbar.Visibility = ViewStates.Visible;
-            contentWebview.Visibility = ViewStates.Gone;*/
+            progressBar.Visibility = ViewStates.Visible;
+            contentLinearLayout.Visibility = ViewStates.Gone;
+
             Task.Factory.StartNew(() =>
             {
-
                 //UpdateClient
                 var clientInfo = new Models.Request.UpdateClient.Datum
                 {
@@ -116,10 +120,11 @@ namespace FrontMobileApithon.Droid.Implementations
 
                 if (!response.IsSuccess)
                 {
-						// progressbar.Visibility = Android.Views.ViewStates.Gone;
-						RunOnUiThread(() =>
-						{
-							Android.App.AlertDialog.Builder dialo = new AlertDialog.Builder(this);
+                    RunOnUiThread(() =>
+                    {
+						progressBar.Visibility = ViewStates.Gone;
+						contentLinearLayout.Visibility = ViewStates.Visible;
+						Android.App.AlertDialog.Builder dialo = new AlertDialog.Builder(this);
                         AlertDialog aler = dialo.Create();
                         aler.SetTitle("ALERTA");
                         aler.SetMessage("Hubo un error inesperado");
@@ -131,17 +136,16 @@ namespace FrontMobileApithon.Droid.Implementations
 					return;
                 }
 
-                /*RunOnUiThread(() =>
-                {
-                    progressbar.Visibility = Android.Views.ViewStates.Gone;
-                    contentWebview.Visibility = Android.Views.ViewStates.Visible;
-                });*/
+               
                 var Client = (Models.Responses.UpdateClient.UpdateClientResponse)response.Result;
 
                 if (Client.data[0].header.status.Equals("200"))
                 {
 					RunOnUiThread(() =>
 					{
+
+						progressBar.Visibility = Android.Views.ViewStates.Gone;
+						contentLinearLayout.Visibility = Android.Views.ViewStates.Visible;
 						Android.App.AlertDialog.Builder dialogs = new AlertDialog.Builder(this);
                     AlertDialog alerts = dialogs.Create();
                     alerts.SetTitle("Operación Exitosa");
@@ -159,6 +163,9 @@ namespace FrontMobileApithon.Droid.Implementations
 
 				RunOnUiThread(() =>
 				{
+
+					progressBar.Visibility = Android.Views.ViewStates.Gone;
+					contentLinearLayout.Visibility = Android.Views.ViewStates.Visible;
 					Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
                 AlertDialog alert = dialog.Create();
                 alert.SetTitle("ALERTA");
@@ -171,7 +178,7 @@ namespace FrontMobileApithon.Droid.Implementations
 				return;
             });
 
-
+         
             /* clientInfo = new ClientInfo
              {
                  address = Client.data[0].address,
@@ -215,7 +222,7 @@ namespace FrontMobileApithon.Droid.Implementations
             {
                 mActivity.RunOnUiThread(() =>
                 {
-                    progressbar.Visibility = Android.Views.ViewStates.Gone;
+                    progressBar.Visibility = Android.Views.ViewStates.Gone;
                     Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
                     AlertDialog alert = dialog.Create();
                     alert.SetTitle("ALERTA");
@@ -230,8 +237,8 @@ namespace FrontMobileApithon.Droid.Implementations
 
             mActivity.RunOnUiThread(() =>
             {
-                progressbar.Visibility = Android.Views.ViewStates.Gone;
-            contentWebview.Visibility = Android.Views.ViewStates.Visible;
+                progressBar.Visibility = Android.Views.ViewStates.Gone;
+            contentLinearLayout.Visibility = Android.Views.ViewStates.Visible;
             });
             var Movements = (Models.Responses.Movements.RootObject)ResponseValiateStatement.Result.Result;
             if (Movements.data[0].header.Status.Equals("200"))

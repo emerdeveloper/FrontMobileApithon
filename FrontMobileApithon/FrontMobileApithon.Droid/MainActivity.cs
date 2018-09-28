@@ -135,7 +135,7 @@ namespace FrontMobileApithon.Droid
             if (url.Contains("http://localhost:3000/code?code="))
             {
                 string token = url.Substring(url.IndexOf("=") + 1);
-                Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
+                //Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
                 webviewApi.Visibility = ViewStates.Invisible;
                 CallApi(token);
                 //var response = ApiService.PostGetToken(token);
@@ -223,16 +223,17 @@ namespace FrontMobileApithon.Droid
                 });
                 var Client = (Models.Responses.Client.getClientResponse)ResponseClientInfo.Result;
 
-
-                Intent intent = new Intent(mActivity, typeof(HomeActivity));
+				mActivity.RunOnUiThread(() =>
+				{
+					Intent intent = new Intent(mActivity, typeof(HomeActivity));
                 intent.AddFlags(ActivityFlags.ClearTop | ActivityFlags.SingleTop);
                 intent.PutExtra("ClientInfo", JsonConvert.SerializeObject(Client));
                 intent.PutExtra("token", access_token);
                 mActivity.StartActivity(intent);
                 mActivity.Finish();
-
-                /* */
-            });
+				});
+				/* */
+			});
 
         }
     }

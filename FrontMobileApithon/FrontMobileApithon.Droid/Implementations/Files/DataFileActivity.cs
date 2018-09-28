@@ -245,27 +245,27 @@ namespace FrontMobileApithon.Droid.Implementations.Files
             switch (count)
             {
                 case 1:
-                    one.SetImageResource(Resource.Drawable.yellow_circle);
+                    one.SetImageResource(Resource.Drawable.blue_circle);
                     oneFile.Text = file;
                     oneFile.Visibility = ViewStates.Visible;
                     break;
                 case 2:
-                    two.SetImageResource(Resource.Drawable.yellow_circle);
+                    two.SetImageResource(Resource.Drawable.blue_circle);
                     secondFile.Text = file;
                     secondFile.Visibility = ViewStates.Visible;
                     break;
                 case 3:
-                    three.SetImageResource(Resource.Drawable.yellow_circle);
+                    three.SetImageResource(Resource.Drawable.blue_circle);
                     thirthFile.Text = file;
                     thirthFile.Visibility = ViewStates.Visible;
                     break;
                 case 4:
-                    four.SetImageResource(Resource.Drawable.yellow_circle);
+                    four.SetImageResource(Resource.Drawable.blue_circle);
                     fourFile.Text = file;
                     fourFile.Visibility = ViewStates.Visible;
                     break;
                 case 5:
-                    five.SetImageResource(Resource.Drawable.yellow_circle);
+                    five.SetImageResource(Resource.Drawable.blue_circle);
                     fiveFile.Text = file;
                     fiveFile.Visibility = ViewStates.Visible;
                     break;
