@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrontMobileApithon.Models.Responses
 {
-    class GetTokenResponse
+    public class GetTokenResponse
     {
         public string token_type { get; set; }
         public string access_token { get; set; }

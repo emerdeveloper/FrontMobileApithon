@@ -13,8 +13,8 @@ namespace FrontMobileApithon.Utilities.Enums
             public const string BaseAdress = "https://api.us.apiconnect.ibmcloud.com/bancolombiabluemix-dev";
             public const string TokenSecurity = "/sandbox/security/oauth-otp/oauth2/token";
 
-            public const string BaseAdressBluemix = "https://api.us.apiconnect.ibmcloud.com/bancolombiabluemix-dev";
-            public const string MovementsServicePrefix = "/sandbox/security/oauth-otp/oauth2/token";
+            public const string BaseAdressBluemix = "http://pyme.k8s-bancolombia-dev.us-south.containers.mybluemix.net";
+            public const string MovementsServicePrefix = "/getMovements";
         }
 
         public struct Messages
