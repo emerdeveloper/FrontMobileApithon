@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using FrontMobileApithon.Droid.Implementations.Files;
+using FrontMobileApithon.Services;
+using FrontMobileApithon.Utilities.Enums;
 
 namespace FrontMobileApithon.Droid.Implementations
 {
@@ -19,13 +21,13 @@ namespace FrontMobileApithon.Droid.Implementations
         Switch simpleSwitch;
         bool isCapable = true;
         TextView capable;
-
+        private ApiConsumer ApiService;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.accounts);
-
+            ApiService = new ApiConsumer();
             simpleSwitch = FindViewById<Switch>(Resource.Id.simpleSwitch);
 
             capable = FindViewById<TextView>(Resource.Id.capable);
@@ -86,23 +88,13 @@ namespace FrontMobileApithon.Droid.Implementations
 
             Task.Factory.StartNew(() =>
             {
-            var clientInfo = new ClientInfo
-            {
-                address = Client.data[0].address,
-                cellPhone = Client.data[0].cellPhone,
-                declarationReady = Client.data[0].declarationReady,
-                email = Client.data[0].email,
-                firstName = Client.data[0].firstName,
-                address = Client.data[0].address,
-            }; 
-
 
                 //Armando el objeto para consumir API movements
                 //No borrar Declara o nó
 
                 var header = new Models.Request.Movements.Header
                 {
-                    token = access_token,
+                    token = HomeActivity.GetInstance().access_token,
                 };
 
                 var datum = new Models.Request.Movements.Datum
@@ -121,7 +113,6 @@ namespace FrontMobileApithon.Droid.Implementations
 
 
                 var ResponseValiateStatement = ApiService.PostGetMovements(
-                                                access_token,
                                                 Constants.Url.MovementsServicePrefix,
                                                 requestModel);
 

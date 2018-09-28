@@ -151,7 +151,6 @@ namespace FrontMobileApithon.Services
 
         //DelcaraONo
         public async Task<Response> PostGetMovements(
-            string accessToken,
             string MovementsServicePrefix,
             Models.Request.Movements.RootObject model)
         {

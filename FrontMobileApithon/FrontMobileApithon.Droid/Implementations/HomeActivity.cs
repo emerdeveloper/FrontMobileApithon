@@ -46,7 +46,8 @@ namespace FrontMobileApithon.Droid.Implementations
         #endregion
 
         public Models.Responses.Client.getClientResponse clientInfo { get; set; }
-        bool isUpdated = true;
+        public string access_token  { get; set; }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -55,7 +56,7 @@ namespace FrontMobileApithon.Droid.Implementations
             SetContentView(Resource.Layout.home);
             clientInfo = JsonConvert.DeserializeObject<Models.Responses.Client.getClientResponse>(
             this.Intent.GetStringExtra("ClientInfo"));
-
+            access_token = this.Intent.GetStringExtra("token");
 
             TextView grattings, info;
             
