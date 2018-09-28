@@ -14,65 +14,52 @@ namespace FrontMobileApithon.Services
     {
 
         #region Methods
-        public async Task<Response> SearchBooks(string book)
+        //GetClient Información del Usuario
+        public async Task<Response> GetClientInfo(
+           string accessToken,
+           string GetClientServicePrefix,
+            Models.Request.Client.getClientRequest model)
         {
-            return null;
-            /*try
+            try
             {
 
-                HttpClient httpClient = new HttpClient
-                {
-
-                    BaseAddress = new Uri(Constants.Url.BaseAdress)
-                };
-
-                var response = await httpClient.GetAsync(string.Format("{0}{1}/{2}", Constants.Url.BaseAdressApi, Constants.Url.Search, book));
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
+                var url = GetClientServicePrefix;
+                var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)
                 {
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = Constants.Messages.ErrorResponse,
-                        Result = null,
+                        Message = response.StatusCode.ToString(),
                     };
                 }
 
                 var result = await response.Content.ReadAsStringAsync();
-                var resultObject = JsonConvert.DeserializeObject<SearchRequest>(result);
-
-                if (!resultObject.Error.Equals("0"))
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = Constants.Messages.ErrorResponse,
-                        Result = null,
-                    };
-                }
+                var newRecord = JsonConvert.DeserializeObject<Models.Responses.Client.getClientResponse>(result);
 
                 return new Response
                 {
                     IsSuccess = true,
-                    Message = Constants.Status.SuccessResponse,
-                    Result = resultObject.Books,
+                    Message = "OK",
+                    Result = newRecord,
                 };
-
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-#if DEBUG
-                System.Diagnostics.Debug.WriteLine("::::Class : ApiConsumer----- Method: SearchBooks(string book)" + e.Message.ToString());
-#endif
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = Constants.Status.ErrorResponse,
-                    Result = null,
+                    Message = ex.Message,
                 };
-            }*/
+            }
         }
-        //Segundo APi
+
+        //DelcaraONo
         public async Task<Response> PostGetMovements(
             string accessToken,
             string MovementsServicePrefix,
@@ -122,13 +109,6 @@ namespace FrontMobileApithon.Services
         {
             try
             {
-                /*var nvc = new List<KeyValuePair<string, string>>();
-                nvc.Add(new KeyValuePair<string, string>("grant_type", "authorization_code"));
-                nvc.Add(new KeyValuePair<string, string>("code ", code));
-                nvc.Add(new KeyValuePair<string, string>("client_id", "16ebf6cc-38f7-497f-b064-7ca1d562727a"));
-                nvc.Add(new KeyValuePair<string, string>("client_secret", "xJ4wD2eL3bB2vV1yI1xR8lH7lN6hU1aJ2yH2tW6dX3gP5kS0qU"));
-                nvc.Add(new KeyValuePair<string, string>("redirect_uri", "http://localhost:3000/code"));*/
-
                 var dict = new Dictionary<string, string>();
                 dict.Add("grant_type", "authorization_code");
                 dict.Add("code", code);

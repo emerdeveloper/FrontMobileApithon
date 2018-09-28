@@ -65,6 +65,7 @@
     <Compile Include="Services\ApiConsumer.cs" />
     <Compile Include="Services\CheckConnection.cs" />
     <Compile Include="Utilities\Enums\Constants.cs" />
+    <Compile Include="Models\ClientInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -13,7 +13,7 @@ using Android.Webkit;
 using FrontMobileApithon.Models.Responses;
 using System.Collections.Generic;
 using FrontMobileApithon.Utilities.Enums;
-using static Android.App.ActionBar;
+using FrontMobileApithon.Models;
 
 namespace FrontMobileApithon.Droid
 {
@@ -142,7 +142,8 @@ namespace FrontMobileApithon.Droid
         LinearLayout contentWebview;
         private ApiConsumer ApiService;
         private CheckConnection CheckConnection;
-        public string access_token { get; set; }
+        string access_token { get; set; }
+        ClientInfo clientInfo { get; set; }
         static Android.Support.V7.App.AlertDialog dialog;
 
         public WebViewClientClass(Activity mActivity, WebView _webviewApi, LinearLayout progressbar, LinearLayout contentWebview)
@@ -199,7 +200,66 @@ namespace FrontMobileApithon.Droid
 
                 var access_token = ((GetTokenResponse)response.Result.Result).access_token;
 
+
+                //GetClient
+                var header = new Models.Request.Client.Header
+                {
+                    token = access_token,
+                };
+
+                var datum = new Models.Request.Client.Datum
+                {
+                    header = header,
+                };
+
+                var requestModel = new Models.Request.Client.getClientRequest
+                {
+                    data = new List<Models.Request.Client.Datum>()
+                };
+                requestModel.data.Add(datum);
+
+                var ResponseClientInfo = ApiService.GetClientInfo(
+                                                access_token,
+                                                Constants.Url.MovementsServicePrefix,
+                                                requestModel);
+
+                if (!ResponseClientInfo.Result.IsSuccess)
+                {
+                    mActivity.RunOnUiThread(() =>
+                    {
+                        progressbar.Visibility = Android.Views.ViewStates.Gone;
+                        Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
+                        AlertDialog alert = dialog.Create();
+                        alert.SetTitle("ALERTA");
+                        alert.SetMessage("Hubo un error inesperado");
+                        alert.SetButton("ACEPTAR", (c, ev) =>
+                        { });
+                        alert.SetButton2("CANCEL", (c, ev) => { });
+                        alert.Show();
+                        return;
+                    });
+                }
+
+                mActivity.RunOnUiThread(() =>
+                {
+                    progressbar.Visibility = Android.Views.ViewStates.Gone;
+                    contentWebview.Visibility = Android.Views.ViewStates.Visible;
+                });
+                var Client = (Models.Responses.Client.getClientResponse)ResponseClientInfo.Result.Result;
+               /* clientInfo = new ClientInfo
+                {
+                    address = Client.data[0].address,
+                    cellPhone = Client.data[0].cellPhone,
+                    declarationReady = Client.data[0].declarationReady,
+                    email = Client.data[0].email,
+                    firstName = Client.data[0].firstName,
+                    address = Client.data[0].address,
+                }; */
+
+
                 //Armando el objeto para consumir API movements
+                //No borrar Declara o nó
+                /*
                 var header = new Models.Request.Movements.Header
                 {
                     token = access_token,
@@ -215,6 +275,10 @@ namespace FrontMobileApithon.Droid
                     data = new List<Models.Request.Movements.Datum>()
                 };
                 requestModel.data.Add(datum);
+
+
+
+
 
                 var ResponseValiateStatement = ApiService.PostGetMovements(
                                                 access_token,
@@ -256,7 +320,7 @@ namespace FrontMobileApithon.Droid
                     }
 
                     // TODO: No declara
-                }
+                }*/
             });
 
         }
