@@ -67,7 +67,7 @@
         android:textSize="10dp" />
 	<ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:id="@+id/scrollView1">
 		<LinearLayout
@@ -76,12 +76,10 @@
             android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="1"
             android:id="@+id/linearLayout2">
 			<ImageView
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
+				android:layout_height="wrap_content"
 				android:id="@+id/doc"
 				android:src="@drawable/declaracionfile"
 				android:layout_marginRight="0.0dp" />

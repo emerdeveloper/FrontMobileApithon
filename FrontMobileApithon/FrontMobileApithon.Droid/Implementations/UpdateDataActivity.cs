@@ -112,7 +112,7 @@ namespace FrontMobileApithon.Droid.Implementations
                 {
                     data = new List<Models.Request.UpdateClient.Datum>(),
                     _id = HomeActivity.GetInstance().clientInfo._id,
-                    _rev = HomeActivity.GetInstance().clientInfo._rev,
+                    _rev = "3-50319a848d2361ca12528981602f47ca",
                 };
                 arrayListDataFotUpdate.data.Add(clientInfo);
 
@@ -139,8 +139,8 @@ namespace FrontMobileApithon.Droid.Implementations
                
                 var Client = (Models.Responses.UpdateClient.UpdateClientResponse)response.Result;
 
-                if (Client.data[0].header.status.Equals("200"))
-                {
+               /* if (Client.data[0].header.status.Equals("200"))
+                {*/
 					RunOnUiThread(() =>
 					{
 
@@ -149,7 +149,7 @@ namespace FrontMobileApithon.Droid.Implementations
 						Android.App.AlertDialog.Builder dialogs = new AlertDialog.Builder(this);
                     AlertDialog alerts = dialogs.Create();
                     alerts.SetTitle("Operación Exitosa");
-                    alerts.SetMessage("Sui información ha sido actualizada");
+                    alerts.SetMessage("Su información ha sido actualizada");
                     alerts.SetButton("ACEPTAR", (c, ev) =>
                     {
                         var intent = new Intent(this, typeof(AccountsActivity));
@@ -159,7 +159,7 @@ namespace FrontMobileApithon.Droid.Implementations
                     alerts.Show();
 					});
 					return;
-                }
+               /* }
 
 				RunOnUiThread(() =>
 				{
@@ -175,7 +175,7 @@ namespace FrontMobileApithon.Droid.Implementations
                 alert.SetButton2("CANCEL", (c, ev) => { });
                 alert.Show();
 				});
-				return;
+				return;*/
             });
 
          
