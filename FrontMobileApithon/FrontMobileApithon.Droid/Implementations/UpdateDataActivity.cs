@@ -105,7 +105,7 @@ namespace FrontMobileApithon.Droid.Implementations
                 {
                     RunOnUiThread(() =>
                     {
-                       // progressbar.Visibility = Android.Views.ViewStates.Gone;
+                        // progressbar.Visibility = Android.Views.ViewStates.Gone;
                         Android.App.AlertDialog.Builder dialo = new AlertDialog.Builder(this);
                         AlertDialog aler = dialo.Create();
                         aler.SetTitle("ALERTA");
@@ -228,8 +228,6 @@ namespace FrontMobileApithon.Droid.Implementations
 
                 // TODO: No declara
             }*/
-        });
-
         }
 
     }
