@@ -40,14 +40,12 @@ namespace FrontMobileApithon.Droid
             conditionTxt.Click += ConditionTxt_Click;
         }
 
-
         private void ConditionTxt_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(termsAndConditionsActivity));
             StartActivity(intent);
         }
     }
-
     
 
     internal class WebViewClientClass :  WebViewClient
@@ -64,7 +62,6 @@ namespace FrontMobileApithon.Droid
         //Give the host application a chance to take over the control when a new URL is about to be loaded in the current WebView.  
         public override bool ShouldOverrideUrlLoading(WebView view, string url)
         {
-
             view.LoadUrl(url);
             if (url.Contains("http://localhost:3000/code?code="))
             {
@@ -77,7 +74,6 @@ namespace FrontMobileApithon.Droid
             }
             return true;
         }
-
     }
 }
 
