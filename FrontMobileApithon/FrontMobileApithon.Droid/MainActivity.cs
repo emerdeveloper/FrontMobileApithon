@@ -117,7 +117,6 @@ namespace FrontMobileApithon.Droid
         private CheckConnection CheckConnection;
         string access_token { get; set; }
         ClientInfo clientInfo { get; set; }
-        static Android.Support.V7.App.AlertDialog dialog;
 
         public WebViewClientClass(Activity mActivity, WebView _webviewApi, LinearLayout progressbar, LinearLayout contentWebview)
         {
@@ -136,7 +135,7 @@ namespace FrontMobileApithon.Droid
             if (url.Contains("http://localhost:3000/code?code="))
             {
                 string token = url.Substring(url.IndexOf("=") + 1);
-                Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
+                //Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
                 webviewApi.Visibility = ViewStates.Invisible;
                 CallApi(token);
                 //var response = ApiService.PostGetToken(token);
@@ -168,12 +167,11 @@ namespace FrontMobileApithon.Droid
                         alert.Show();
                     });
                 }
-
+				
                 var access_token = ((GetTokenResponse)response.Result.Result).access_token;
 
-
-                //GetClient
-                var header = new Models.Request.Client.Header
+				//GetClient
+				var header = new Models.Request.Client.Header
                 {
                     token = access_token,
                 };
@@ -201,11 +199,18 @@ namespace FrontMobileApithon.Droid
                         progressbar.Visibility = Android.Views.ViewStates.Gone;
                         Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
                         AlertDialog alert = dialog.Create();
-                        alert.SetTitle("ALERTA");
-                        alert.SetMessage("Hubo un error inesperado");
+                        alert.SetTitle("Lo sentimos");
+                        alert.SetMessage("Su autenticación ha fallado");
                         alert.SetButton("ACEPTAR", (c, ev) =>
-                        { });
-                        alert.SetButton2("CANCEL", (c, ev) => { });
+                        {
+							var intent2 = new Intent(mActivity, typeof(MainActivity));
+							mActivity.StartActivity(intent2);
+							mActivity.Finish();
+
+						});
+                        alert.SetButton2("CANCEL", (c, ev) => {
+							mActivity.Finish();
+						});
                         alert.Show();
                         return;
                     });
@@ -218,16 +223,17 @@ namespace FrontMobileApithon.Droid
                 });
                 var Client = (Models.Responses.Client.getClientResponse)ResponseClientInfo.Result;
 
-
-                Intent intent = new Intent(mActivity, typeof(HomeActivity));
+				mActivity.RunOnUiThread(() =>
+				{
+					Intent intent = new Intent(mActivity, typeof(HomeActivity));
                 intent.AddFlags(ActivityFlags.ClearTop | ActivityFlags.SingleTop);
                 intent.PutExtra("ClientInfo", JsonConvert.SerializeObject(Client));
                 intent.PutExtra("token", access_token);
                 mActivity.StartActivity(intent);
                 mActivity.Finish();
-
-                /* */
-            });
+				});
+				/* */
+			});
 
         }
     }

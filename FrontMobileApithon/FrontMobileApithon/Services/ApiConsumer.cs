@@ -39,7 +39,7 @@ namespace FrontMobileApithon.Services
                 }
 
                 var result = await response.Content.ReadAsStringAsync();
-                var newRecord = JsonConvert.DeserializeObject<Models.Responses.Client.getClientResponse>(result);
+                var newRecord = JsonConvert.DeserializeObject<Models.Responses.Aggregation.RootObject>(result);
 
                 return new Response
                 {

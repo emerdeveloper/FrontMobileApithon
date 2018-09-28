@@ -8,6 +8,7 @@ using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using Android.Webkit;
 using Android.Widget;
 
 namespace FrontMobileApithon.Droid.Implementations
@@ -24,7 +25,7 @@ namespace FrontMobileApithon.Droid.Implementations
             SetContentView(Resource.Layout.download);
 
             TextView info = FindViewById<TextView>(Resource.Id.info);
-            info.Text = "Recuerda que puedes reducir tus ingresos anuales como patrimoniales adquiriendo productos bancarios. Asesórate con nosotros y disfruta de los beneficios tributarios que solo Bancolombia S.A te puede brindar";
+            info.Text = "Recuerda que puedes alivios tributarios adquiriendo productos bancarios. Asesórate con nosotros y disfruta de estos tributarios que solo Bancolombia S.A te puede brindar";
             
             Button moreInfoBtn = FindViewById<Button>(Resource.Id.moreInfoBtn);
             Button downloadBtn = FindViewById<Button>(Resource.Id.downloadBtn);
@@ -32,7 +33,8 @@ namespace FrontMobileApithon.Droid.Implementations
 
             ImageButton backBtn = FindViewById<ImageButton>(Resource.Id.backBtn);
             backBtn.Click += BackBtn_Click;
-        }
+
+		}
 
         private void DownloadBtn_Click(object sender, EventArgs e)
         {

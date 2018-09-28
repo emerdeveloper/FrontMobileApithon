@@ -8,6 +8,6 @@ namespace FrontMobileApithon.Models.Responses.Movements
 {
     public class Header
     {
-        public string Status { get; set; }
+        public int Status { get; set; }
     }
 }

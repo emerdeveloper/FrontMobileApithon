@@ -5,162 +5,183 @@
     android:layout_height="match_parent"
     android:background="#ffffffff">
     <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:id="@+id/linearLayout1">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:background="@android:color/transparent"
-            android:id="@+id/toolBar"
-            android:textSize="14dp"
-            android:layout_weight="5"
-            android:text="" />
-        <ImageView
-            android:layout_width="5.5dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/logo_bancolombia"
-            android:src="@drawable/alim_medio"
-            android:layout_marginRight="0.0dp" />
-    </LinearLayout>
-    <LinearLayout
         android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:weightSum="1"
-        android:id="@+id/linearLayout1">
-        <ScrollView
+        android:layout_height="match_parent"
+        android:id="@+id/contentLinearLayout"
+        android:visibility="gone">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/scrollView1">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:weightSum="1"
-                android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:id="@+id/linearLayout1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@android:color/transparent"
+                android:id="@+id/toolBar"
+                android:textSize="14dp"
+                android:layout_weight="5"
+                android:text="" />
+            <ImageView
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:id="@+id/linearLayout2">
-                <TextView
-                    android:text="Por favor, actualiza tu información"
+                android:layout_weight="1"
+                android:id="@+id/logo_bancolombia"
+                android:src="@drawable/medium"
+                android:layout_marginRight="0.0dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:weightSum="1"
+            android:id="@+id/linearLayout1">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/scrollView1">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:weightSum="1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:id="@+id/titleText"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:textColor="#00448c" />
-                <EditText
-                    android:id="@+id/name"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginTop="40dp"
-                    android:clickable="false"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:editable="false"
-                    android:hint="Nombres"
-                    android:inputType="text"
-                    android:text="Juana" />
-                <EditText
-                    android:id="@+id/lastname"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:hint="Apellidos"
-                    android:clickable="false"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:editable="false"
-                    android:inputType="text"
-                    android:text="Pérez Ossa" />
-                <EditText
-                    android:id="@+id/documentId"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:clickable="false"
-                    android:cursorVisible="false"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:hint="Número de identificación"
-                    android:editable="false"
-                    android:inputType="number"
-                    android:text="1234567890" />
-                <EditText
-                    android:id="@+id/email"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:hint="Correo electrónico"
-                    android:inputType="textEmailAddress" />
-                <EditText
-                    android:id="@+id/address"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:hint="Dirección de residencia"
-                    android:inputType="text" />
-                <EditText
-                    android:id="@+id/city"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:hint="Ciudad"
-                    android:inputType="text" />
-                <EditText
-                    android:id="@+id/cellphone"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:hint="Celular"
-                    android:inputType="phone" />
-                <EditText
-                    android:id="@+id/work"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:hint="Ocupación"
-                    android:inputType="text" />
-                <Button
-                    android:text="ACTUALIZAR"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginBottom="29.5dp"
-                    android:id="@+id/updateBtn"
-                    android:textColor="#00448c"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:background="@drawable/button_border"
-                    android:padding="10dip" />
-            </LinearLayout>
-        </ScrollView>
+                    android:layout_height="match_parent"
+                    android:id="@+id/linearLayout2">
+                    <TextView
+                        android:text="Por favor, actualiza tu información"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:gravity="center"
+                        android:id="@+id/titleText"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textColor="#00448c" />
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="40dp"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:editable="false"
+                        android:hint="Nombres"
+                        android:inputType="text"
+                        android:text="Juana" />
+                    <EditText
+                        android:id="@+id/lastname"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:hint="Apellidos"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:editable="false"
+                        android:inputType="text"
+                        android:text="Pérez Ossa" />
+                    <EditText
+                        android:id="@+id/documentId"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:hint="Número de identificación"
+                        android:editable="false"
+                        android:inputType="number"
+                        android:text="1234567890" />
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:hint="Correo electrónico"
+                        android:inputType="textEmailAddress" />
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:hint="Dirección de residencia"
+                        android:inputType="text" />
+                    <EditText
+                        android:id="@+id/city"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:hint="Ciudad"
+                        android:inputType="text" />
+                    <EditText
+                        android:id="@+id/cellphone"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:hint="Celular"
+                        android:inputType="phone" />
+                    <EditText
+                        android:id="@+id/work"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:hint="Ocupación"
+                        android:inputType="text" />
+                    <Button
+                        android:text="ACTUALIZAR"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginBottom="29.5dp"
+                        android:id="@+id/updateBtn"
+                        android:textColor="#00448c"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:background="@drawable/button_border"
+                        android:padding="10dip" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+<!--Progress-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/ProgressBar"
+        android:gravity="center">
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:progress="25" />
     </LinearLayout>
 </LinearLayout>

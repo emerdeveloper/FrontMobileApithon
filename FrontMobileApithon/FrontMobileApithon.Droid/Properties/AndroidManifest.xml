@@ -8,7 +8,7 @@
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<application android:label="FrontMobileApithon.Droid" android:icon="@drawable/Icon" />
 	<!--<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />-->
-	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="24" />
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />
 	<!-- app center push - START 
 	<permission android:protectionLevel="signature" android:name="${applicationId}.permission.C2D_MESSAGE" />
 	<uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
@@ -35,16 +35,13 @@
 		</receiver>
 		<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/Icon" />
 		FireBase-->
-
-    <service android:name="NotificationService" android:exported="false">
-    </service>
-    
-    <receiver android:name="BootReceiver">
-      <intent-filter>
-        <action android:name="co.com.bancolombia.frontmobileapithon" />
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
-      </intent-filter>
-    </receiver>
+		<service android:name="NotificationService" android:exported="false"></service>
+		<receiver android:name="BootReceiver">
+			<intent-filter>
+				<action android:name="co.com.bancolombia.frontmobileapithon" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
 		<!---FireBase-->
 	</application>
 </manifest>

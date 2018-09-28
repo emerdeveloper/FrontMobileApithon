@@ -17,7 +17,6 @@ namespace FrontMobileApithon.Models.Responses.Client
         public bool isUpdated { get; set; }
         public bool declarationReady { get; set; }
         public string pdf { get; set; }
-        public bool updated { get; set; }
         public string fullName { get; set; }
     }
 }
