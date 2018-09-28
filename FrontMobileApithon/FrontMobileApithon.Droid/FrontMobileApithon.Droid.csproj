@@ -190,6 +190,7 @@
     <Compile Include="Implementations\Files\DataFileActivity.cs" />
     <Compile Include="Implementations\Notifications\NotificationService.cs" />
     <Compile Include="Implementations\Splash\SplashActivity.cs" />
+    <Compile Include="Implementations\HomeActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Implementations\termsAndConditionsActivity.cs" />
     <Compile Include="Implementations\UpdateDataActivity.cs" />
@@ -290,6 +291,17 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\switch_color.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\alim_medio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\folder.png" />
+  </ItemGroup>
+   <ItemGroup>
+    <AndroidResource Include="Resources\layout\home.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

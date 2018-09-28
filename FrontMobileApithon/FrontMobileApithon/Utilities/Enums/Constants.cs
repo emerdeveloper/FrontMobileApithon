@@ -16,6 +16,8 @@ namespace FrontMobileApithon.Utilities.Enums
             public const string BaseAdressBluemix = "http://pyme.k8s-bancolombia-dev.us-south.containers.mybluemix.net";
             public const string MovementsServicePrefix = "/getMovements";
             public const string GetClientServicePrefix = "/getClient";
+            public const string UpdateClientInfoServicePrefix = "/updateClient";
+            public const string AggregationServicePrefix = "/aggregation";
         }
 
         public struct Messages

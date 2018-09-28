@@ -14,6 +14,96 @@ namespace FrontMobileApithon.Services
     {
 
         #region Methods
+        //AggreationUploadFile Información del Usuario
+        public async Task<Response> AggreationUploadFile(
+           string accessToken,
+            Models.Request.Aggregation.RootObject model)
+        {
+            try
+            {
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
+                var url = Constants.Url.AggregationServicePrefix;
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var newRecord = JsonConvert.DeserializeObject<Models.Responses.Client.getClientResponse>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "OK",
+                    Result = newRecord,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+
+        //Update Información del Usuario
+        public async Task<Response> UpdateInfo(
+           string UpdateClientServicePrefix,
+            Models.Request.UpdateClient.UpdateClientRequest model)
+        {
+            try
+            {
+
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
+                var url = UpdateClientServicePrefix;
+                var response = await client.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var newRecord = JsonConvert.DeserializeObject<Models.Responses.UpdateClient.UpdateClientResponse>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "OK",
+                    Result = newRecord,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+
         //GetClient Información del Usuario
         public async Task<Response> GetClientInfo(
            string accessToken,

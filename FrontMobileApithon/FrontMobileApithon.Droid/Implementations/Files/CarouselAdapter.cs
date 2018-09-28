@@ -69,11 +69,8 @@ namespace FrontMobileApithon.Droid.Implementations.Files
                 {
                     // Contact permissions have not been granted yet. Request them directly.
                     ActivityCompat.RequestPermissions((Activity)context, permissions, 0);
-                }
-                
+                }               
             }; 
-
-            Toast.MakeText(context, position + "", ToastLength.Short).Show();
 
             ((ViewPager)container).AddView(imageView, 0);
 

@@ -29,7 +29,7 @@
             android:layout_marginRight="0.0dp" />
     </LinearLayout>
     <TextView
-        android:text="jngsijfnñjafnvñjfnsvoñjanfsjvnasfjgnajfkdngjñadfnjgandfijgnadfjgnadfjngbiuafjdnguianfbjgoiasfguiajfhguihdfuiguifdhguihdfiughaduifhguiadfhguihdfiughaduifjguiadfhguiadfhguihadfughadiufjgiuadfhgiuadhfguiadhfuighadfiughauidfuiaf"
+        android:text="jngsijfnñjafnhguihddfhgiuadhfguiadhfuighadfiughauidfuiaf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -37,7 +37,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:gravity="center"
-        android:id="@+id/titleText"
+        android:id="@+id/capable"
         android:textStyle="bold"
         android:textSize="20dp"
         android:textColor="#00448c" />
@@ -62,7 +62,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="1dp"
             android:background="@android:color/transparent"
-            android:text="¿Desea que Bancolombia S.A lo asesore en su declaración de renta?" />
+            android:text="¿Deseas que Bancolombia S.A te asesore en tu declaración de renta?" />
         <Switch
             android:id="@+id/simpleSwitch"
             android:layout_width="0dp"

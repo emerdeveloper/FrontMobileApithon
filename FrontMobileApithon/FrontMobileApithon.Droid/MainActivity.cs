@@ -41,36 +41,6 @@ namespace FrontMobileApithon.Droid
         //public string access_token { get; set; }
         WebView webViewAPI;
 
-
-
-        #region Constructor
-        public MainActivity()
-        {
-            /* ApiService = new ApiConsumer();*/
-            CheckConnection = new CheckConnection();
-            Init(this);
-        }
-        #endregion
-
-        #region Singleton
-        static MainActivity instance = null;
-
-        public static MainActivity GetInstance()
-        {
-            if (instance == null)
-            {
-                return instance = new MainActivity();
-            }
-
-            return instance;
-        }
-
-        static void Init(MainActivity context)
-        {
-            instance = context;
-        }
-        #endregion
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -169,8 +139,7 @@ namespace FrontMobileApithon.Droid
                 Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
                 webviewApi.Visibility = ViewStates.Invisible;
                 CallApi(token);
-                var response = ApiService.PostGetToken(token);
-
+                //var response = ApiService.PostGetToken(token);
             }
             return true;
         }
@@ -252,86 +221,12 @@ namespace FrontMobileApithon.Droid
 
                 Intent intent = new Intent(mActivity, typeof(HomeActivity));
                 intent.AddFlags(ActivityFlags.ClearTop | ActivityFlags.SingleTop);
-                intent.PutExtra("ClientInfo", JsonConvert.SerializeObject(Client.data[0]));
+                intent.PutExtra("ClientInfo", JsonConvert.SerializeObject(Client));
                 intent.PutExtra("token", access_token);
                 mActivity.StartActivity(intent);
                 mActivity.Finish();
 
-                /* clientInfo = new ClientInfo
-                 {
-                     address = Client.data[0].address,
-                     cellPhone = Client.data[0].cellPhone,
-                     declarationReady = Client.data[0].declarationReady,
-                     email = Client.data[0].email,
-                     firstName = Client.data[0].firstName,
-                     address = Client.data[0].address,
-                 }; */
-
-
-                //Armando el objeto para consumir API movements
-                //No borrar Declara o nó
-                /*
-                var header = new Models.Request.Movements.Header
-                {
-                    token = access_token,
-                };
-
-                var datum = new Models.Request.Movements.Datum
-                {
-                    header = header,
-                };
-
-                var requestModel = new Models.Request.Movements.RootObject
-                {
-                    data = new List<Models.Request.Movements.Datum>()
-                };
-                requestModel.data.Add(datum);
-
-
-
-
-
-                var ResponseValiateStatement = ApiService.PostGetMovements(
-                                                access_token,
-                                                Constants.Url.MovementsServicePrefix,
-                                                requestModel);
-
-                if (!ResponseValiateStatement.Result.IsSuccess)
-                {
-                    mActivity.RunOnUiThread(() =>
-                    {
-                        progressbar.Visibility = Android.Views.ViewStates.Gone;
-                        Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
-                        AlertDialog alert = dialog.Create();
-                        alert.SetTitle("ALERTA");
-                        alert.SetMessage("Hubo un error inesperado");
-                        alert.SetButton("ACEPTAR", (c, ev) =>
-                        { });
-                        alert.SetButton2("CANCEL", (c, ev) => { });
-                        alert.Show();
-                        return;
-                    });
-                }
-
-                mActivity.RunOnUiThread(() =>
-                {
-                    progressbar.Visibility = Android.Views.ViewStates.Gone;
-                contentWebview.Visibility = Android.Views.ViewStates.Visible;
-                });
-                var Movements = (Models.Responses.Movements.RootObject)ResponseValiateStatement.Result.Result;
-                if (Movements.data[0].header.Status.Equals("200"))
-                {
-                    if (Movements.data[0].declaration)
-                    {
-                        //TODO: Crear intent para que salga que debe declarar
-
-                        intent = new Intent(mActivity, typeof(AccountsActivity));
-                        mActivity.StartActivity(intent);
-                        return;
-                    }
-
-                    // TODO: No declara
-                }*/
+                /* */
             });
 
         }
