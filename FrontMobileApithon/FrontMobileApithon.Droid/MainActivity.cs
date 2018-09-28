@@ -117,7 +117,6 @@ namespace FrontMobileApithon.Droid
         private CheckConnection CheckConnection;
         string access_token { get; set; }
         ClientInfo clientInfo { get; set; }
-        static Android.Support.V7.App.AlertDialog dialog;
 
         public WebViewClientClass(Activity mActivity, WebView _webviewApi, LinearLayout progressbar, LinearLayout contentWebview)
         {
@@ -168,12 +167,11 @@ namespace FrontMobileApithon.Droid
                         alert.Show();
                     });
                 }
-
+				
                 var access_token = ((GetTokenResponse)response.Result.Result).access_token;
 
-
-                //GetClient
-                var header = new Models.Request.Client.Header
+				//GetClient
+				var header = new Models.Request.Client.Header
                 {
                     token = access_token,
                 };
@@ -201,11 +199,18 @@ namespace FrontMobileApithon.Droid
                         progressbar.Visibility = Android.Views.ViewStates.Gone;
                         Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
                         AlertDialog alert = dialog.Create();
-                        alert.SetTitle("ALERTA");
-                        alert.SetMessage("Hubo un error inesperado");
+                        alert.SetTitle("Lo sentimos");
+                        alert.SetMessage("Su autenticación ha fallado");
                         alert.SetButton("ACEPTAR", (c, ev) =>
-                        { });
-                        alert.SetButton2("CANCEL", (c, ev) => { });
+                        {
+							var intent2 = new Intent(mActivity, typeof(MainActivity));
+							mActivity.StartActivity(intent2);
+							mActivity.Finish();
+
+						});
+                        alert.SetButton2("CANCEL", (c, ev) => {
+							mActivity.Finish();
+						});
                         alert.Show();
                         return;
                     });

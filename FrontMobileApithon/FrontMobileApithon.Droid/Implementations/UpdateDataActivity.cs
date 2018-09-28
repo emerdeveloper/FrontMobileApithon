@@ -53,11 +53,11 @@ namespace FrontMobileApithon.Droid.Implementations
         {
 
 
-            CallApi();
+			//CallApi();
 
-            if (!String.IsNullOrEmpty(email.Text) && !String.IsNullOrEmpty(address.Text) && !String.IsNullOrEmpty(city.Text) && !String.IsNullOrEmpty(cellphone.Text) && !String.IsNullOrEmpty(city.Text) && !String.IsNullOrEmpty(work.Text))
-            {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+			if (!String.IsNullOrEmpty(email.Text) && !String.IsNullOrEmpty(address.Text) && !String.IsNullOrEmpty(city.Text) && !String.IsNullOrEmpty(cellphone.Text) && !String.IsNullOrEmpty(city.Text) && !String.IsNullOrEmpty(work.Text))
+			{
+				/*AlertDialog.Builder dialog = new AlertDialog.Builder(this);
                 AlertDialog alert = dialog.Create();
                 alert.SetMessage("Tu información ha sido actualizada exitosamente");
                 alert.SetButton("OK", (c, ev) =>
@@ -65,12 +65,25 @@ namespace FrontMobileApithon.Droid.Implementations
                     Intent intent = new Intent(this, typeof(AccountsActivity));
                     StartActivity(intent);
                 });
-                alert.Show();
-            }
-            else
-            {
-                Toast.MakeText(this, "Debes completar todo el formulario para poder continuar", ToastLength.Long).Show();
-            }
+                alert.Show();*/
+				CallApi();
+
+			}
+			else
+			{
+				RunOnUiThread(() =>
+				{
+
+					AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+					AlertDialog alert = dialog.Create();
+					alert.SetMessage("Debes completar todo el formulario para poder continuar");
+					alert.SetButton("ACEPTAR", (c, ev) =>
+					{
+					});
+					alert.Show();
+				});
+				//Toast.MakeText(this, "Debes completar todo el formulario para poder continuar", ToastLength.Long).Show();
+			}
         }
 
         public void CallApi()
@@ -103,10 +116,10 @@ namespace FrontMobileApithon.Droid.Implementations
 
                 if (!response.IsSuccess)
                 {
-                    RunOnUiThread(() =>
-                    {
-                        // progressbar.Visibility = Android.Views.ViewStates.Gone;
-                        Android.App.AlertDialog.Builder dialo = new AlertDialog.Builder(this);
+						// progressbar.Visibility = Android.Views.ViewStates.Gone;
+						RunOnUiThread(() =>
+						{
+							Android.App.AlertDialog.Builder dialo = new AlertDialog.Builder(this);
                         AlertDialog aler = dialo.Create();
                         aler.SetTitle("ALERTA");
                         aler.SetMessage("Hubo un error inesperado");
@@ -114,8 +127,8 @@ namespace FrontMobileApithon.Droid.Implementations
                         { });
                         aler.SetButton2("CANCEL", (c, ev) => { });
                         aler.Show();
-                        return;
-                    });
+					});
+					return;
                 }
 
                 /*RunOnUiThread(() =>
@@ -127,7 +140,9 @@ namespace FrontMobileApithon.Droid.Implementations
 
                 if (Client.data[0].header.status.Equals("200"))
                 {
-                    Android.App.AlertDialog.Builder dialogs = new AlertDialog.Builder(this);
+					RunOnUiThread(() =>
+					{
+						Android.App.AlertDialog.Builder dialogs = new AlertDialog.Builder(this);
                     AlertDialog alerts = dialogs.Create();
                     alerts.SetTitle("Operación Exitosa");
                     alerts.SetMessage("Sui información ha sido actualizada");
@@ -138,10 +153,13 @@ namespace FrontMobileApithon.Droid.Implementations
                         Finish();
                     });
                     alerts.Show();
-                    return;
+					});
+					return;
                 }
 
-                Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+				RunOnUiThread(() =>
+				{
+					Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
                 AlertDialog alert = dialog.Create();
                 alert.SetTitle("ALERTA");
                 alert.SetMessage("Hubo un error inesperado");
@@ -149,7 +167,8 @@ namespace FrontMobileApithon.Droid.Implementations
                 { });
                 alert.SetButton2("CANCEL", (c, ev) => { });
                 alert.Show();
-                return;
+				});
+				return;
             });
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -15,6 +15,8 @@ using Android.Views;
 using Android.Widget;
 using Com.Viewpagerindicator;
 using FrontMobileApithon.Droid.Implementations.Notifications;
+using FrontMobileApithon.Services;
+using FrontMobileApithon.Utilities.Enums;
 
 namespace FrontMobileApithon.Droid.Implementations.Files
 {
@@ -24,8 +26,9 @@ namespace FrontMobileApithon.Droid.Implementations.Files
         ViewPager foldersCarousel;
         string file;
         int count = 0;
+		private ApiConsumer ApiService;
 
-        public int[] folderCarousel = {
+		public int[] folderCarousel = {
                 Resource.Drawable.folder,
                 Resource.Drawable.folder,
                 Resource.Drawable.folder,
@@ -43,8 +46,8 @@ namespace FrontMobileApithon.Droid.Implementations.Files
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.chooseFiles);
-
-            foldersCarousel = FindViewById<ViewPager>(Resource.Id.cardCarousel);
+			ApiService = new ApiConsumer();
+			foldersCarousel = FindViewById<ViewPager>(Resource.Id.cardCarousel);
             ImageButton next = FindViewById<ImageButton>(Resource.Id.next);
             ImageButton previous = FindViewById<ImageButton>(Resource.Id.previous);
 
@@ -83,19 +86,143 @@ namespace FrontMobileApithon.Droid.Implementations.Files
 
         private void ContinueBtn_Click(object sender, EventArgs e)
         {
-            Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-            AlertDialog alert = dialog.Create();
-            alert.SetTitle("CARGA EXITOSA");
-            alert.SetMessage("El envío de tus documentos ha sido exitoso");
-            alert.SetButton("OK", (c, ev) =>
-            {
-                Intent intent = new Intent(this, typeof(HomeActivity));
-                StartActivity(intent);
-            });
-            alert.Show();
-        }
+			/*  Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+			  AlertDialog alert = dialog.Create();
+			  alert.SetTitle("CARGA EXITOSA");
+			  alert.SetMessage("El envío de tus documentos ha sido exitoso");
+			  alert.SetButton("OK", (c, ev) =>
+			  {
+				  Intent intent = new Intent(this, typeof(HomeActivity));
+				  StartActivity(intent);
+			  });
+			  alert.Show();*/
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+			CallApi();
+		}
+
+		public void CallApi()
+		{
+			/*
+                 * progressbar.Visibility = ViewStates.Visible;
+            contentWebview.Visibility = ViewStates.Gone;
+                */
+
+			Task.Factory.StartNew(() =>
+			{
+
+				//Armando el objeto para consumir API movements
+				//No borrar Declara o nó
+
+				var header = new Models.Request.Aggregation.Header
+				{
+					token = HomeActivity.GetInstance().access_token,
+				};
+
+				var documentFile1 = new Models.Request.Aggregation.Document
+				{
+					bank_id = "0001",
+					financialProduct_type = "Credit Card",
+					data_file = System.Text.Encoding.UTF8.GetBytes(oneFile.Text).ToString(),
+				};
+
+				var documentFile2 = new Models.Request.Aggregation.Document
+				{
+					bank_id = "0001",
+					financialProduct_type = "Credit Card",
+					data_file = System.Text.Encoding.UTF8.GetBytes(secondFile.Text).ToString(),
+				};
+
+				var documentsFileArray = new List<Models.Request.Aggregation.Document>();
+				documentsFileArray.Add(documentFile1);
+				documentsFileArray.Add(documentFile2);
+
+				var datum = new Models.Request.Aggregation.Datum
+				{
+					header = header,
+					document = documentsFileArray
+				};
+
+				
+				var requestModel = new Models.Request.Aggregation.RootObject
+				{
+					data = new List<Models.Request.Aggregation.Datum>()
+				};
+				requestModel.data.Add(datum);
+
+
+
+
+
+				var ResponseValiateStatement = ApiService.AggreationUploadFile(
+												Constants.Url.AggregationServicePrefix,
+												requestModel).Result;
+
+				if (!ResponseValiateStatement.IsSuccess)
+				{
+					RunOnUiThread(() =>
+					{
+						/*progressbar.Visibility = Android.Views.ViewStates.Gone;*/
+						Android.App.AlertDialog.Builder dialog1 = new AlertDialog.Builder(this);
+						AlertDialog alert1 = dialog1.Create();
+						alert1.SetTitle("Lo sentimos");
+						alert1.SetMessage("Hubo un error inesperado");
+						alert1.SetButton("Reintentar", (c, ev) =>
+						{ CallApi(); });
+						alert1.SetButton2("CANCEL", (c, ev) => {
+							var intent2 = new Intent(this, typeof(DataFileActivity));
+							StartActivity(intent2);
+							Finish();
+						});
+						alert1.Show();
+						return;
+					});
+				}
+
+				/*RunOnUiThread(() =>
+				{
+					progressbar.Visibility = Android.Views.ViewStates.Gone;
+                contentWebview.Visibility = Android.Views.ViewStates.Visible;
+				});*/
+
+				var ResponseAgregation = (Models.Responses.Aggregation.RootObject)ResponseValiateStatement.Result;
+				if (ResponseAgregation.data[0].header.status == 200)
+				{
+					RunOnUiThread(() =>
+					{
+						Android.App.AlertDialog.Builder dialogs = new AlertDialog.Builder(this);
+					AlertDialog alerts = dialogs.Create();
+					alerts.SetTitle("Operación exitosa");
+					alerts.SetMessage("Tus datos se han enviado exitosamente. En pocos minutos recibiras respuesta");
+					alerts.SetButton("Aceptar", (c, ev) =>
+					{
+						/*var intent2 = new Intent(this, typeof(DataFileActivity));
+						StartActivity(intent2);*/
+						Finish();
+					});
+
+					alerts.Show();
+					});
+					return;
+				}
+				RunOnUiThread(() =>
+				{
+					Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+				AlertDialog alert = dialog.Create();
+				alert.SetTitle("Lo sentimos");
+				alert.SetMessage("Hubo un error inesperado");
+				alert.SetButton("Reintentar", (c, ev) =>
+				{ CallApi(); });
+				alert.SetButton2("CANCEL", (c, ev) => {
+					var intent2 = new Intent(this, typeof(DataFileActivity));
+					StartActivity(intent2);
+					Finish();
+				});
+				alert.Show();
+				});
+			});
+		}
+
+		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
