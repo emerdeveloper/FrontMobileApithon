@@ -125,6 +125,7 @@
     <Compile Include="FireBase\FirebaseIdService.cs" />
     <Compile Include="FireBase\FirebaseMessagingServices.cs" />
     <Compile Include="Implementations\AccountsActivity.cs" />
+    <Compile Include="Implementations\DownloadActivity.cs" />
     <Compile Include="Implementations\Files\CarouselAdapter.cs" />
     <Compile Include="Implementations\Files\DataFileActivity.cs" />
     <Compile Include="Implementations\Files\IDocumentViewer.cs" />
@@ -227,6 +228,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\campana.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\download.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

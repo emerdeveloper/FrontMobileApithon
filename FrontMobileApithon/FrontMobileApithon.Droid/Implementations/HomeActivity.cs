@@ -26,6 +26,9 @@ namespace FrontMobileApithon.Droid.Implementations
             SetContentView(Resource.Layout.home);
 
             TextView grattings, info;
+            ImageView notification = FindViewById<ImageView>(Resource.Id.notification);
+
+            notification.Click += Notification_Click;
             
             grattings = FindViewById<TextView>(Resource.Id.grattings);
             grattings.Text = "Bienvenido" + " " + "Nombre de individuo";
@@ -39,6 +42,12 @@ namespace FrontMobileApithon.Droid.Implementations
             Button closeBtn = FindViewById<Button>(Resource.Id.closeBtn);
             closeBtn.Click += CloseBtn_Click;
 
+        }
+
+        private void Notification_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(DownloadActivity));
+            StartActivity(intent);
         }
 
         private void CloseBtn_Click(object sender, EventArgs e)
