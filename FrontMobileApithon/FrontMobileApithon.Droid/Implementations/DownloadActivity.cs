@@ -28,9 +28,15 @@ namespace FrontMobileApithon.Droid.Implementations
             
             Button moreInfoBtn = FindViewById<Button>(Resource.Id.moreInfoBtn);
             Button downloadBtn = FindViewById<Button>(Resource.Id.downloadBtn);
+            downloadBtn.Click += DownloadBtn_Click;
 
             ImageButton backBtn = FindViewById<ImageButton>(Resource.Id.backBtn);
             backBtn.Click += BackBtn_Click;
+        }
+
+        private void DownloadBtn_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private void BackBtn_Click(object sender, EventArgs e)
