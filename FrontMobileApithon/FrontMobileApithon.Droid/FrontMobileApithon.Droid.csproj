@@ -128,6 +128,7 @@
     <Compile Include="Implementations\Files\CarouselAdapter.cs" />
     <Compile Include="Implementations\Files\DataFileActivity.cs" />
     <Compile Include="Implementations\Files\IDocumentViewer.cs" />
+    <Compile Include="Implementations\HomeActivity.cs" />
     <Compile Include="Implementations\Notifications\NotificationService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Implementations\termsAndConditionsActivity.cs" />
@@ -209,6 +210,20 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\gray_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\alim_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\alim_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\home.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\alim_medio.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

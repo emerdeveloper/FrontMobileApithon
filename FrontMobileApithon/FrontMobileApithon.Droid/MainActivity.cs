@@ -69,7 +69,7 @@ namespace FrontMobileApithon.Droid
                 //Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
                 webviewApi.Visibility = ViewStates.Gone;
 
-                Intent intent = new Intent(mActivity, typeof(AccountsActivity));
+                Intent intent = new Intent(mActivity, typeof(HomeActivity));
                 mActivity.StartActivity(intent);
             }
             return true;

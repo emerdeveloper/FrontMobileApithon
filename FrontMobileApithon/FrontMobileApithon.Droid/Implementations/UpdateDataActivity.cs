@@ -47,7 +47,7 @@ namespace FrontMobileApithon.Droid.Implementations
                 alert.SetMessage("Tu información ha sido actualizada exitosamente");
                 alert.SetButton("OK", (c, ev) =>
                 {
-                    Intent intent = new Intent(this, typeof(DataFileActivity));
+                    Intent intent = new Intent(this, typeof(AccountsActivity));
                     StartActivity(intent);
                 });
                 alert.Show();

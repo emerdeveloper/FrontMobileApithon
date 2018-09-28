@@ -9,13 +9,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using FrontMobileApithon.Droid.Implementations.Files;
 
 namespace FrontMobileApithon.Droid.Implementations
 {
     [Activity(Label = "AccountsActivity")]
     public class AccountsActivity : Activity
     {
-        Switch simpleSwitch; 
+        Switch simpleSwitch;
+        bool isCapable = true;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,14 +27,22 @@ namespace FrontMobileApithon.Droid.Implementations
 
             simpleSwitch = FindViewById<Switch>(Resource.Id.simpleSwitch);
 
+            TextView capable = FindViewById<TextView>(Resource.Id.capable);
+
             Button continueBtn = FindViewById<Button>(Resource.Id.continueBtn);
             continueBtn.Click += ContinueBtn_Click;
 
             Button exitBtn = FindViewById<Button>(Resource.Id.exitBtn);
             exitBtn.Click += ExitBtn_Click;
 
-            //string sendNot = Intent.Extras.GetString("SecondContent");
-            
+            if (isCapable)
+            {
+                capable.Text = "Por la suma de tus ingresos anuales, eres contribuyente y debes hacer la declaración de renta ante la DIAN";
+            }
+            else
+            {
+                capable.Text = "Por la suma de tus ingresos anuales, no eres contribuyente y no debes hacer la declaración de renta ante la DIAN";
+            }            
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -54,7 +64,7 @@ namespace FrontMobileApithon.Droid.Implementations
         {
             if (simpleSwitch.Checked)
             {
-                Intent intent = new Intent(this, typeof(UpdateDataActivity));
+                Intent intent = new Intent(this, typeof(DataFileActivity));
                 StartActivity(intent);
             }
             else
