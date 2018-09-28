@@ -35,45 +35,45 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
         android:id="@+id/linearLayout1">
         <ImageView
-            android:layout_width="5.5dp"
-            android:layout_height="match_parent"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
-            android:id="@+id/logo_bancolombia"
-            android:src="@drawable/logo"
+            android:id="@+id/one"
+            android:src="@drawable/gray_circle"
             android:layout_marginRight="0.0dp" />
         <ImageView
-            android:layout_width="5.5dp"
-            android:layout_height="match_parent"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
-            android:id="@+id/logo_bancolombia"
-            android:src="@drawable/logo"
+            android:id="@+id/two"
+            android:src="@drawable/gray_circle"
             android:layout_marginRight="0.0dp" />
         <ImageView
-            android:layout_width="5.5dp"
-            android:layout_height="match_parent"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
-            android:id="@+id/logo_bancolombia"
-            android:src="@drawable/logo"
+            android:id="@+id/three"
+            android:src="@drawable/gray_circle"
             android:layout_marginRight="0.0dp" />
         <ImageView
-            android:layout_width="5.5dp"
-            android:layout_height="match_parent"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
-            android:id="@+id/logo_bancolombia"
-            android:src="@drawable/logo"
+            android:id="@+id/four"
+            android:src="@drawable/gray_circle"
             android:layout_marginRight="0.0dp" />
         <ImageView
-            android:layout_width="5.5dp"
-            android:layout_height="match_parent"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
-            android:id="@+id/logo_bancolombia"
-            android:src="@drawable/logo"
+            android:id="@+id/five"
+            android:src="@drawable/gray_circle"
             android:layout_marginRight="0.0dp" />
     </LinearLayout>
     <ScrollView
@@ -112,7 +112,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.86"
-                    android:id="@+id/linearLayout4">
+                    android:id="@+id/linearLayoutCarousel">
                     <android.support.v4.view.ViewPager
                         android:minWidth="25px"
                         android:minHeight="25px"
@@ -138,7 +138,7 @@
                     android:id="@+id/next" />
             </LinearLayout>
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:layout_width="match_parent"
@@ -148,19 +148,57 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginBottom="10dp"
                 android:id="@+id/linearLayout1">
-                <ImageView
-                    android:layout_width="5.5dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/logo_bancolombia"
-                    android:src="@drawable/logo"
-                    android:layout_marginRight="0.0dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/oneFile"
+                    android:textSize="10dp"
+                    android:textColor="#000000"
+                    android:visibility="gone"
+                    android:background="@android:color/transparent"
+                    android:text="" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/secondFile"
+                    android:textColor="#000000"
+                    android:textSize="10dp"
+                    android:visibility="gone"
+                    android:background="@android:color/transparent"
+                    android:text="" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/thirthFile"
+                    android:textColor="#000000"
+                    android:visibility="gone"
+                    android:textSize="10dp"
+                    android:background="@android:color/transparent"
+                    android:text="" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fourFile"
+                    android:textColor="#000000"
+                    android:visibility="gone"
+                    android:textSize="10dp"
+                    android:background="@android:color/transparent"
+                    android:text="" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fiveFile"
+                    android:textColor="#000000"
+                    android:visibility="gone"
+                    android:textSize="10dp"
+                    android:background="@android:color/transparent"
+                    android:text="" />
             </LinearLayout>
             <Button
                 android:text="CONTINUAR"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginBottom="10dp"

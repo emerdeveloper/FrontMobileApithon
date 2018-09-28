@@ -188,6 +188,7 @@
     <Compile Include="Implementations\AccountsActivity.cs" />
     <Compile Include="Implementations\Files\CarouselAdapter.cs" />
     <Compile Include="Implementations\Files\DataFileActivity.cs" />
+    <Compile Include="Implementations\Notifications\NotificationService.cs" />
     <Compile Include="Implementations\Splash\SplashActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Implementations\termsAndConditionsActivity.cs" />
@@ -209,6 +210,8 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\progressDialog.axml" />
+    <AndroidResource Include="Resources\drawable\gray_circle.png" />
+    <AndroidResource Include="Resources\drawable\yellow_circle.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />

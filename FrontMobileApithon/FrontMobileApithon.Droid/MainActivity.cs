@@ -14,6 +14,9 @@ using FrontMobileApithon.Models.Responses;
 using System.Collections.Generic;
 using FrontMobileApithon.Utilities.Enums;
 using FrontMobileApithon.Models;
+using Java.Net;
+using Android.Graphics;
+using Newtonsoft.Json;
 
 namespace FrontMobileApithon.Droid
 {
@@ -159,7 +162,6 @@ namespace FrontMobileApithon.Droid
         //Give the host application a chance to take over the control when a new URL is about to be loaded in the current WebView.  
         public override bool ShouldOverrideUrlLoading(WebView view, string url)
         {
-
             view.LoadUrl(url);
             if (url.Contains("http://localhost:3000/code?code="))
             {
@@ -220,10 +222,10 @@ namespace FrontMobileApithon.Droid
 
                 var ResponseClientInfo = ApiService.GetClientInfo(
                                                 access_token,
-                                                Constants.Url.MovementsServicePrefix,
-                                                requestModel);
+                                                Constants.Url.GetClientServicePrefix,
+                    requestModel).Result;
 
-                if (!ResponseClientInfo.Result.IsSuccess)
+                if (!ResponseClientInfo.IsSuccess)
                 {
                     mActivity.RunOnUiThread(() =>
                     {
@@ -245,16 +247,25 @@ namespace FrontMobileApithon.Droid
                     progressbar.Visibility = Android.Views.ViewStates.Gone;
                     contentWebview.Visibility = Android.Views.ViewStates.Visible;
                 });
-                var Client = (Models.Responses.Client.getClientResponse)ResponseClientInfo.Result.Result;
-               /* clientInfo = new ClientInfo
-                {
-                    address = Client.data[0].address,
-                    cellPhone = Client.data[0].cellPhone,
-                    declarationReady = Client.data[0].declarationReady,
-                    email = Client.data[0].email,
-                    firstName = Client.data[0].firstName,
-                    address = Client.data[0].address,
-                }; */
+                var Client = (Models.Responses.Client.getClientResponse)ResponseClientInfo.Result;
+
+
+                Intent intent = new Intent(mActivity, typeof(HomeActivity));
+                intent.AddFlags(ActivityFlags.ClearTop | ActivityFlags.SingleTop);
+                intent.PutExtra("ClientInfo", JsonConvert.SerializeObject(Client.data[0]));
+                intent.PutExtra("token", access_token);
+                mActivity.StartActivity(intent);
+                mActivity.Finish();
+
+                /* clientInfo = new ClientInfo
+                 {
+                     address = Client.data[0].address,
+                     cellPhone = Client.data[0].cellPhone,
+                     declarationReady = Client.data[0].declarationReady,
+                     email = Client.data[0].email,
+                     firstName = Client.data[0].firstName,
+                     address = Client.data[0].address,
+                 }; */
 
 
                 //Armando el objeto para consumir API movements
