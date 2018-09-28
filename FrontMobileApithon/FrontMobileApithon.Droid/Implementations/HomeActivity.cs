@@ -59,6 +59,9 @@ namespace FrontMobileApithon.Droid.Implementations
             access_token = this.Intent.GetStringExtra("token");
 
             TextView grattings, info;
+            ImageView notification = FindViewById<ImageView>(Resource.Id.notification);
+
+            notification.Click += Notification_Click;
             
             grattings = FindViewById<TextView>(Resource.Id.grattings);
             grattings.Text = "Bienvenido" + " " + clientInfo.data[0].fullName;
@@ -69,6 +72,30 @@ namespace FrontMobileApithon.Droid.Implementations
             Button nextBtn = FindViewById<Button>(Resource.Id.nextBtn);
             nextBtn.Click += NextBtn_Click;
 
+            Button closeBtn = FindViewById<Button>(Resource.Id.closeBtn);
+            closeBtn.Click += CloseBtn_Click;
+
+        }
+
+        private void Notification_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(DownloadActivity));
+            StartActivity(intent);
+        }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            AlertDialog alert = dialog.Create();
+            alert.SetTitle("ALERTA");
+            alert.SetMessage("¿Estás seguro de querer cerrar sesión?");
+            alert.SetButton("OK", (c, ev) =>
+            {
+                Intent intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
+            });
+            alert.SetButton2("CANCEL", (c, ev) => { });
+            alert.Show();
         }
 
         private void NextBtn_Click(object sender, EventArgs e)

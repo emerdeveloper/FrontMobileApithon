@@ -36,6 +36,7 @@ namespace FrontMobileApithon.Droid.Implementations.Files
         CarouselAdapter carouselAdapter;
         ImageView one, two, three, four, five;
         TextView oneFile, secondFile, thirthFile, fourFile, fiveFile;
+        Button continueBtn, othersBtn;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -46,6 +47,13 @@ namespace FrontMobileApithon.Droid.Implementations.Files
             foldersCarousel = FindViewById<ViewPager>(Resource.Id.cardCarousel);
             ImageButton next = FindViewById<ImageButton>(Resource.Id.next);
             ImageButton previous = FindViewById<ImageButton>(Resource.Id.previous);
+
+            continueBtn = FindViewById<Button>(Resource.Id.continueBtn);
+            continueBtn.Click += ContinueBtn_Click;
+
+            othersBtn = FindViewById<Button>(Resource.Id.othersBtn);
+            othersBtn.Click += OthersBtn_Click;
+
             carouselAdapter = new CarouselAdapter(this, folderCarousel);
             foldersCarousel.Adapter = carouselAdapter;
             CirclePageIndicator indicator = FindViewById<CirclePageIndicator>(Resource.Id.indicator);
@@ -66,6 +74,25 @@ namespace FrontMobileApithon.Droid.Implementations.Files
             next.Click += Next_Click;
             previous.Click += Previous_Click;
 
+        }
+
+        private void OthersBtn_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ContinueBtn_Click(object sender, EventArgs e)
+        {
+            Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            AlertDialog alert = dialog.Create();
+            alert.SetTitle("CARGA EXITOSA");
+            alert.SetMessage("El envío de tus documentos ha sido exitoso");
+            alert.SetButton("OK", (c, ev) =>
+            {
+                Intent intent = new Intent(this, typeof(HomeActivity));
+                StartActivity(intent);
+            });
+            alert.Show();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
