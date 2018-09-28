@@ -192,6 +192,7 @@
     <Compile Include="Implementations\Splash\SplashActivity.cs" />
     <Compile Include="Implementations\HomeActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Implementations\DownloadActivity.cs" />
     <Compile Include="Implementations\termsAndConditionsActivity.cs" />
     <Compile Include="Implementations\UpdateDataActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -298,8 +299,16 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\folder.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\campana.jpg" />
+  </ItemGroup>
    <ItemGroup>
     <AndroidResource Include="Resources\layout\home.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\download.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
