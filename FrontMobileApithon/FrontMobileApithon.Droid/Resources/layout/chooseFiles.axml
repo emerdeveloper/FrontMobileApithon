@@ -150,7 +150,7 @@
                 android:id="@+id/linearLayout1">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50.5dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/oneFile"
                     android:textSize="10dp"
                     android:textColor="#000000"
@@ -159,7 +159,7 @@
                     android:text="" />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50.5dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/secondFile"
                     android:textColor="#000000"
                     android:textSize="10dp"
@@ -168,7 +168,7 @@
                     android:text="" />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50.5dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/thirthFile"
                     android:textColor="#000000"
                     android:visibility="gone"
@@ -177,7 +177,7 @@
                     android:text="" />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50.5dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/fourFile"
                     android:textColor="#000000"
                     android:visibility="gone"
@@ -186,7 +186,7 @@
                     android:text="" />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50.5dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/fiveFile"
                     android:textColor="#000000"
                     android:visibility="gone"

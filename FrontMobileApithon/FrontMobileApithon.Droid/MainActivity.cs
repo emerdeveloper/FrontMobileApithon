@@ -14,7 +14,7 @@ using Android.Graphics;
 
 namespace FrontMobileApithon.Droid
 {
-	[Activity (Label = "FrontMobileApithon.Droid", MainLauncher = false, Icon = "@drawable/icon")]
+	[Activity (Label = "FrontMobileApithon.Droid", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
     {
 		protected override void OnCreate (Bundle bundle)

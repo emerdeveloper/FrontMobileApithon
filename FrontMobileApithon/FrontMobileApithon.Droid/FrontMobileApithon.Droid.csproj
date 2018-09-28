@@ -128,6 +128,7 @@
     <Compile Include="Implementations\Files\CarouselAdapter.cs" />
     <Compile Include="Implementations\Files\DataFileActivity.cs" />
     <Compile Include="Implementations\Files\IDocumentViewer.cs" />
+    <Compile Include="Implementations\Notifications\NotificationService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Implementations\termsAndConditionsActivity.cs" />
     <Compile Include="Implementations\UpdateDataActivity.cs" />

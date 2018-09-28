@@ -14,10 +14,11 @@ using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
 using Com.Viewpagerindicator;
+using FrontMobileApithon.Droid.Implementations.Notifications;
 
 namespace FrontMobileApithon.Droid.Implementations.Files
 {
-    [Activity(Label = "FrontMobileApithon.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "FrontMobileApithon.Droid", MainLauncher = false, Icon = "@drawable/icon")]
     public class DataFileActivity : Activity
     {
         ViewPager foldersCarousel;
@@ -130,7 +131,33 @@ namespace FrontMobileApithon.Droid.Implementations.Files
         void Next_Click(object sender, EventArgs e)
         {
             foldersCarousel.SetCurrentItem(foldersCarousel.CurrentItem + 1, true);
-            
+            //var intent = new Intent(this, typeof(NotificationService));
+            //intent.PutExtra("Notification", true);
+            //StartService(intent);
+
+            /*
+            Bundle sendNot = new Bundle();
+            sendNot.PutString("SecondContent", "This message is sent");
+            Intent intent = new Intent(this, typeof(AccountsActivity));
+            intent.PutExtras(sendNot);
+
+            Android.App.TaskStackBuilder stackBuilder = Android.App.TaskStackBuilder.Create(this);
+            stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof(AccountsActivity)));
+            stackBuilder.AddNextIntent(intent);
+
+            PendingIntent pendingIntent = stackBuilder.GetPendingIntent(0, PendingIntentFlags.UpdateCurrent);
+
+            //NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+            Notification notification = new Notification.Builder(this)
+                         .SetSmallIcon(Resource.Drawable.Icon)
+                         .SetColor(0x81CBC4)
+                         .SetContentTitle(GetString(Resource.String.app_name))
+                         .SetContentText(String.Format("Declaración de renta lista", "Titulo"))
+                         .SetContentIntent(pendingIntent).Build();
+
+            NotificationManager notificationManager = (NotificationManager)GetSystemService(Context.NotificationService);
+            notificationManager.Notify(1000, notification);*/
+
         }
 
         void Previous_Click(object sender, EventArgs e)

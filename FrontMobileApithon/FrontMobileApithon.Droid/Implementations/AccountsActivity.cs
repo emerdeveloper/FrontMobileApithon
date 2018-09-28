@@ -30,6 +30,8 @@ namespace FrontMobileApithon.Droid.Implementations
 
             Button exitBtn = FindViewById<Button>(Resource.Id.exitBtn);
             exitBtn.Click += ExitBtn_Click;
+
+            //string sendNot = Intent.Extras.GetString("SecondContent");
             
         }
 
