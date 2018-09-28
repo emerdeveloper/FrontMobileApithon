@@ -48,6 +48,8 @@ namespace FrontMobileApithon.Droid.Implementations
         public Models.Responses.Client.getClientResponse clientInfo { get; set; }
         public string access_token  { get; set; }
 
+        bool showNotification;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -64,7 +66,7 @@ namespace FrontMobileApithon.Droid.Implementations
             notification.Click += Notification_Click;
             
             grattings = FindViewById<TextView>(Resource.Id.grattings);
-            grattings.Text = "Bienvenido" + " " + clientInfo.data[0].fullName;
+            grattings.Text = "Hola" + " " + clientInfo.data[0].fullName;
 
             info = FindViewById<TextView>(Resource.Id.info);
             info.Text = "¿Sabías que la declaración de renta es un informe, de aquellos contribuyentes considerados como personas naturales, empleados o independientes, que se le presenta a la DIAN; que detalla la situación financiera de los colombianos?";
@@ -75,6 +77,16 @@ namespace FrontMobileApithon.Droid.Implementations
             Button closeBtn = FindViewById<Button>(Resource.Id.closeBtn);
             closeBtn.Click += CloseBtn_Click;
 
+            showNotification = clientInfo.data[0].declarationReady;
+
+            if (showNotification)
+            {
+                notification.Visibility = ViewStates.Visible;
+            }
+            else
+            {
+                notification.Visibility = ViewStates.Gone;
+            }
         }
 
         private void Notification_Click(object sender, EventArgs e)

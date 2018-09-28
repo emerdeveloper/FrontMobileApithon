@@ -136,7 +136,7 @@ namespace FrontMobileApithon.Droid
             if (url.Contains("http://localhost:3000/code?code="))
             {
                 string token = url.Substring(url.IndexOf("=") + 1);
-                Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
+                //Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
                 webviewApi.Visibility = ViewStates.Invisible;
                 CallApi(token);
                 //var response = ApiService.PostGetToken(token);

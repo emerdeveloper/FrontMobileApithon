@@ -22,6 +22,9 @@ namespace FrontMobileApithon.Droid.Implementations
         bool isCapable = true;
         TextView capable;
         private ApiConsumer ApiService;
+        LinearLayout contentLinearLayout;
+        LinearLayout progressBar;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -32,14 +35,15 @@ namespace FrontMobileApithon.Droid.Implementations
 
             capable = FindViewById<TextView>(Resource.Id.capable);
 
+            contentLinearLayout = FindViewById<LinearLayout>(Resource.Id.contentLinearLayout);
+            progressBar = FindViewById<LinearLayout>(Resource.Id.ProgressBar);
+
             Button continueBtn = FindViewById<Button>(Resource.Id.continueBtn);
             continueBtn.Click += ContinueBtn_Click;
 
             Button exitBtn = FindViewById<Button>(Resource.Id.exitBtn);
             exitBtn.Click += ExitBtn_Click;
-            CallApi();
-            
-                    
+            CallApi();                              
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -81,10 +85,8 @@ namespace FrontMobileApithon.Droid.Implementations
 
         public void CallApi()
         {
-            /*
-                 * progressbar.Visibility = ViewStates.Visible;
-            contentWebview.Visibility = ViewStates.Gone;
-                */
+            progressBar.Visibility = ViewStates.Visible;
+            contentLinearLayout.Visibility = ViewStates.Gone;              
 
             Task.Factory.StartNew(() =>
             {
@@ -120,7 +122,7 @@ namespace FrontMobileApithon.Droid.Implementations
                 {
                     RunOnUiThread(() =>
                     {
-                        /*progressbar.Visibility = Android.Views.ViewStates.Gone;*/
+                        progressBar.Visibility = Android.Views.ViewStates.Gone;
                         Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
                         AlertDialog alert = dialog.Create();
                         alert.SetTitle("ALERTA");
@@ -135,8 +137,8 @@ namespace FrontMobileApithon.Droid.Implementations
 
                 RunOnUiThread(() =>
                 {
-                    /*progressbar.Visibility = Android.Views.ViewStates.Gone;
-                contentWebview.Visibility = Android.Views.ViewStates.Visible;*/
+                progressBar.Visibility = Android.Views.ViewStates.Gone;
+                contentLinearLayout.Visibility = Android.Views.ViewStates.Visible;
                 });
                 var Movements = (Models.Responses.Movements.RootObject)ResponseValiateStatement.Result.Result;
                 if (Movements.data[0].header.Status.Equals("200"))
