@@ -50,7 +50,7 @@ namespace FrontMobileApithon.Droid.Implementations
             Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
             AlertDialog alert = dialog.Create();
             alert.SetTitle("ALERTA");
-            alert.SetMessage("¿Estás seguro de querer salir de la aplicación?");
+            alert.SetMessage("¿Estás seguro de querer cerrar sesión?");
             alert.SetButton("OK", (c, ev) =>
             {
                 Intent intent = new Intent(this, typeof(MainActivity));

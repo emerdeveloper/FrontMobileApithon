@@ -36,6 +36,24 @@ namespace FrontMobileApithon.Droid.Implementations
             Button nextBtn = FindViewById<Button>(Resource.Id.nextBtn);
             nextBtn.Click += NextBtn_Click;
 
+            Button closeBtn = FindViewById<Button>(Resource.Id.closeBtn);
+            closeBtn.Click += CloseBtn_Click;
+
+        }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            AlertDialog alert = dialog.Create();
+            alert.SetTitle("ALERTA");
+            alert.SetMessage("¿Estás seguro de querer cerrar sesión?");
+            alert.SetButton("OK", (c, ev) =>
+            {
+                Intent intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
+            });
+            alert.SetButton2("CANCEL", (c, ev) => { });
+            alert.Show();
         }
 
         private void NextBtn_Click(object sender, EventArgs e)

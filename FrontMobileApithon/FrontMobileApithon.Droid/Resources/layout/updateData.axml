@@ -10,22 +10,22 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/borderline"
+        android:background="@android:color/transparent"
         android:id="@+id/linearLayout1">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="50.5dp"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
             android:id="@+id/toolBar"
             android:textSize="14dp"
             android:layout_weight="5"
-            android:background="@android:color/transparent"
             android:text="" />
         <ImageView
             android:layout_width="5.5dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/logo_bancolombia"
-            android:src="@drawable/logo"
+            android:src="@drawable/alim_medio"
             android:layout_marginRight="0.0dp" />
     </LinearLayout>
     <LinearLayout
@@ -34,7 +34,7 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/borderline"
+        android:background="@android:color/transparent"
         android:weightSum="1"
         android:id="@+id/linearLayout1">
         <ScrollView
