@@ -5,24 +5,19 @@ using Android.Content;
 using Android.Widget;
 using Android.OS;
 using System.Threading.Tasks;
-using Firebase.Iid;
 using FrontMobileApithon.Droid.Implementations;
-using Android.Gms.Common;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Push;
 using Android.Views;
 using FrontMobileApithon.Services;
 using eBooks.Services;
-using FrontMobileApithon.Droid.Utilities;
 using Android.Webkit;
 using FrontMobileApithon.Models.Responses;
-using Java.Net;
 using System.Collections.Generic;
 using FrontMobileApithon.Utilities.Enums;
+using static Android.App.ActionBar;
 
 namespace FrontMobileApithon.Droid
 {
-	[Activity (Label = "Apithon", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity (Label = "Apithon", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
         string urlLogin = "https://sbapi.bancolombia.com/security/oauth-otp/oauth2/authorize?client_id=16ebf6cc-38f7-497f-b064-7ca1d562727a&response_type=code&scope=Customer-financial:read:user Customer-ubication:read:user Customer-basic:read:user  Customer-document:write:user&redirect_uri=http://localhost:3000/code";
@@ -39,6 +34,7 @@ namespace FrontMobileApithon.Droid
         private ImageView statusImageView;
         private TextView messagetextView;
         TextView conditionTxt;
+        private LinearLayout progressBar;
         //public string access_token { get; set; }
         WebView webViewAPI;
 
@@ -82,40 +78,17 @@ namespace FrontMobileApithon.Droid
             // IsPlayServicesAvailable();
             // CreateNotificationChannel();
             InitControls();
-            LoadConfiguration();
-
-        }
-
-        private async void LoadConfiguration()
-        {
-            var Connection = await CheckConnection.Check();
-            if (!Connection.IsSuccess)
-            {
-                CreateStatusTurnNoternetConnection(Connection.Message);
-                return;
-            }
-
-            webViewAPI.LoadUrl(urlLogin);
-            await Task.Delay(1500);
-            contentWebview.Visibility = ViewStates.Visible;
-            contentSplash.Visibility = ViewStates.Gone;
         }
 
         private void CreateStatusTurnNoternetConnection(string message)
         {
-            Utils.ShowDialogMessage(
-                "Lo sentimos",
-                message,
-                "Acceptar",
-                "",
-                false,
-                () =>
-                {
-                },
-                () =>
-                {
-                    LoadConfiguration();
-                });
+            Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            AlertDialog alert = dialog.Create();
+            alert.SetTitle("Lo sentimos");
+            alert.SetMessage(message);
+            alert.SetButton("ACEPTAR", (c, ev) =>
+            { });
+            alert.Show();
         }
 
         private void InitControls()
@@ -124,8 +97,8 @@ namespace FrontMobileApithon.Droid
             contentSplash = FindViewById<LinearLayout>(Resource.Id.contentSplash);
             conditionTxt = FindViewById<TextView>(Resource.Id.conditionTxt);
             webViewAPI = (WebView)FindViewById(Resource.Id.webViewAPI);
-
-            webViewAPI.SetWebViewClient(new WebViewClientClass(this, webViewAPI));
+            progressBar = FindViewById<LinearLayout>(Resource.Id.ProgressBar);
+            webViewAPI.SetWebViewClient(new WebViewClientClass(this, webViewAPI, progressBar, contentWebview));
             webViewAPI.LoadUrl(urlLogin);
 
             WebSettings websettings = webViewAPI.Settings;
@@ -133,93 +106,51 @@ namespace FrontMobileApithon.Droid
 
             contentWebview.Visibility = ViewStates.Gone;
             contentSplash.Visibility = ViewStates.Visible;
+            progressBar.Visibility = Android.Views.ViewStates.Gone;
             conditionTxt.Click += ConditionTxt_Click;
-
+            LoadConfiguration();
         }
 
-        private void ConditionTxt_Click(object sender, EventArgs e)
+
+        private async void LoadConfiguration()
         {
-            Intent intent = new Intent(this, typeof(termsAndConditionsActivity));
-            StartActivity(intent);
-        }
-        /*
-        private void ConditionTxt_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine(TAG +"InstanceID token: " + FirebaseInstanceId.Instance.Token);
-
-            Intent intent = new Intent(this, typeof(termsAndConditionsActivity));
-            StartActivity(intent);
-        }*/
-        
-        private void subscribePush()
-        {
-            /* if (!GetString(Resource.String.google_app_id).Equals("1:40631837524:android:0467f3be03ea856a"))
-                 throw new System.Exception("Invalid Json file");
-
-             Task.Run(() => {
-                 var instanceId = FirebaseInstanceId.Instance;
-                 instanceId.DeleteInstanceId();
-                 Android.Util.Log.Debug("TAG", "{0} {1}", instanceId.Token, instanceId.GetToken(GetString(Resource.String.gcm_defaultSenderId), Firebase.Messaging.FirebaseMessaging.InstanceIdScope));
-
-
-             });*/
-
-            AppCenter.Start("6ff88f3a-e2a8-4f05-a4ab-ce4d8a3baa7c", typeof(Push));
-        }
-
-        private void IsPlayServicesAvailable()
-        {
-            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
-            if (ConnectionResult.Success == 0)
+            /*var Connection = await CheckConnection.Check();
+            if (!Connection.IsSuccess)
             {
-#if DEBUG
-                System.Diagnostics.Debug.WriteLine(TAG + " *** " + "Success");
-#endif
-            }
-            else
-            {
-#if DEBUG
-                System.Diagnostics.Debug.WriteLine(TAG + " *** " + "Error");
-#endif
-            }
-        }
-
-        void CreateNotificationChannel()
-        {
-
-           /* if (Build.VERSION.SdkInt < BuildVersionCodes.O)
-            {
-                // Notification channels are new in API 26 (and not a part of the
-                // support library). There is no need to create a notification
-                // channel on older versions of Android.
+                CreateStatusTurnNoternetConnection(Connection.Message);
                 return;
             }*/
-            /*
-            var channel = new NotificationChannel(MyFirebaseMessagingService.CHANNEL_ID,
-                                                  "FCM Notifications",
-                                                  NotificationImportance.Default)
-            {
 
-                Description = "Firebase Cloud Messages appear in this channel"
-            };
-
-            var notificationManager = (NotificationManager)GetSystemService(Android.Content.Context.NotificationService);
-            notificationManager.CreateNotificationChannel(channel);*/
+            await Task.Delay(2000);
+            contentWebview.Visibility = ViewStates.Visible;
+            contentSplash.Visibility = ViewStates.Gone;
         }
+
+        private void ConditionTxt_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(termsAndConditionsActivity));
+            StartActivity(intent);
+        }
+       
     }
     internal class WebViewClientClass :  WebViewClient
     {
         Activity mActivity;
         WebView webviewApi;
         Intent intent;
+        LinearLayout progressbar;
+        LinearLayout contentWebview;
         private ApiConsumer ApiService;
         private CheckConnection CheckConnection;
         public string access_token { get; set; }
+        static Android.Support.V7.App.AlertDialog dialog;
 
-        public WebViewClientClass(Activity mActivity, WebView _webviewApi)
+        public WebViewClientClass(Activity mActivity, WebView _webviewApi, LinearLayout progressbar, LinearLayout contentWebview)
         {
             this.mActivity = mActivity;
             this.webviewApi = _webviewApi;
+            this.progressbar = progressbar;
+            this.contentWebview = contentWebview;
             ApiService = new ApiConsumer();
             CheckConnection = new CheckConnection();
         }
@@ -232,37 +163,38 @@ namespace FrontMobileApithon.Droid
             if (url.Contains("http://localhost:3000/code?code="))
             {
                 string token = url.Substring(url.IndexOf("=") + 1);
-                //Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
-                webviewApi.Visibility = ViewStates.Gone;
+                Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
+                webviewApi.Visibility = ViewStates.Invisible;
                 CallApi(token);
-                intent = new Intent(mActivity, typeof(AccountsActivity));
-                mActivity.StartActivity(intent);
+                var response = ApiService.PostGetToken(token);
+
             }
             return true;
         }
 
-        public async Task CallApi(string code)
+        public void CallApi(string code)
         {
-            var response = await ApiService.PostGetToken(code);
-
-            if (!response.IsSuccess)
+            progressbar.Visibility = Android.Views.ViewStates.Visible;
+            contentWebview.Visibility = Android.Views.ViewStates.Gone;
+            Task.Factory.StartNew(() =>
             {
-                Utils.ShowDialogMessage(
-                "Lo sentimos",
-                "No hay internet",
-                "Acceptar",
-                "",
-                false,
-                () =>
-                {
-                },
-                () =>
-                {
-                });
-                return; 
+                var response =  ApiService.PostGetToken(code);
+
+                if (!response.Result.IsSuccess)
+            {
+                    progressbar.Visibility = Android.Views.ViewStates.Gone;
+                    contentWebview.Visibility = Android.Views.ViewStates.Visible;
+                    Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
+                AlertDialog alert = dialog.Create();
+                alert.SetTitle("ALERTA");
+                alert.SetMessage("Hubo un error inesperado");
+                alert.SetButton("ACEPTAR", (c, ev) =>
+                { });
+                alert.SetButton2("CANCEL", (c, ev) => { });
+                alert.Show();
             }
 
-            access_token = ((GetTokenResponse) response.Result).access_token;
+                var access_token = ((GetTokenResponse) response.Result.Result).access_token;
 
             //Armando el objeto para consumir API movements
             var header = new Models.Request.Movements.Header
@@ -280,40 +212,44 @@ namespace FrontMobileApithon.Droid
                 data = new List<Models.Request.Movements.Datum>()
             };
             requestModel.data.Add(datum);
-
-            var ResponseValiateStatement = await ApiService.Post<Models.Request.Movements.RootObject>(
+           
+            var ResponseValiateStatement =  ApiService.Post<Models.Request.Movements.RootObject>(
                                             access_token, 
                                             Constants.Url.MovementsServicePrefix, 
                                             requestModel);
 
-            if (!response.IsSuccess)
+                if (!response.Result.IsSuccess)
             {
-                Utils.ShowDialogMessage(
-                "Lo sentimos",
-                "Hubo un error con los servicios",
-                "Acceptar",
-                "",
-                false,
-                () =>
-                {
-                },
-                () =>
-                {
-                });
+                    progressbar.Visibility = Android.Views.ViewStates.Gone;
+                    Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
+                AlertDialog alert = dialog.Create();
+                alert.SetTitle("ALERTA");
+                alert.SetMessage("Hubo un error inesperado");
+                alert.SetButton("ACEPTAR", (c, ev) =>
+                { });
+                alert.SetButton2("CANCEL", (c, ev) => { });
+                alert.Show();
                 return;
             }
 
-            var Movements = (Models.Responses.Movements.RootObject)response.Result;
+                progressbar.Visibility = Android.Views.ViewStates.Gone;
+                contentWebview.Visibility = Android.Views.ViewStates.Visible;
+                var Movements = (Models.Responses.Movements.RootObject)response.Result.Result;
             if (Movements.data[0].header.Status.Equals("200"))
             {
                 if (Movements.data[0].declaration)
                 {
                     //TODO: Crear intent para que salga que debe declarar
+
+                    intent = new Intent(mActivity, typeof(AccountsActivity));
+                    mActivity.StartActivity(intent);
                     return;
                 }
 
                 // TODO: No declara
             }
+                });
+                      
         }
     }
 }

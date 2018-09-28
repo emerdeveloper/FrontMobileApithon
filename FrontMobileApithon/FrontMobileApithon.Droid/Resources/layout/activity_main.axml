@@ -11,8 +11,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:id="@+id/contentWebview"
-  android:visibility="gone">
-     <LinearLayout
+  android:visibility="gone"><LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
         android:minHeight="25px"
@@ -83,8 +82,22 @@
                 android:layout_gravity="center"
                 android:textColor="#ff033076" />
         </LinearLayout>
-  </LinearLayout>
-  
+    </LinearLayout>
+        </LinearLayout>
+  <!--Progress-->
+  <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/ProgressBar"
+        android:gravity="center">
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:visibility="visible"
+            android:progress="25" />
+    </LinearLayout>
     
   <!--Splash-->
   <LinearLayout 
@@ -129,5 +142,4 @@
             android:text="Cargando..." />
     </LinearLayout>
   </LinearLayout>
-</LinearLayout>
 </LinearLayout>

@@ -4,13 +4,13 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<application android:label="FrontMobileApithon.Droid" android:icon="@drawable/Icon" />
-	<!--<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />-->
+	<!--<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />-->
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="24" />
 	<!-- app center push - START 
 	<permission android:protectionLevel="signature" android:name="${applicationId}.permission.C2D_MESSAGE" />
 	<uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
 	 app center push - END -->
-	<application android:label="FrontMobileApithon.Droid">
+	<application android:label="FrontMobileApithon.Droid" android:theme="@style/AppTheme">
 		<!-- Add these lines -->
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
