@@ -127,6 +127,7 @@
     <Compile Include="Implementations\AccountsActivity.cs" />
     <Compile Include="Implementations\Files\CarouselAdapter.cs" />
     <Compile Include="Implementations\Files\DataFileActivity.cs" />
+    <Compile Include="Implementations\Files\IDocumentViewer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Implementations\termsAndConditionsActivity.cs" />
     <Compile Include="Implementations\UpdateDataActivity.cs" />
@@ -192,6 +193,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\wizard_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\wizard_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\yellow_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\gray_circle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

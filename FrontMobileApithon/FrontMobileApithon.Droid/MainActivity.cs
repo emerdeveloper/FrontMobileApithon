@@ -10,17 +10,16 @@ using Android;
 using FrontMobileApithon.Droid.Implementations;
 using Android.Webkit;
 using Java.Net;
+using Android.Graphics;
 
 namespace FrontMobileApithon.Droid
 {
-	[Activity (Label = "FrontMobileApithon.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity (Label = "FrontMobileApithon.Droid", MainLauncher = false, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
     {
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
-            Intent intent;
 
             string urlLogin = "https://sbapi.bancolombia.com/security/oauth-otp/oauth2/authorize?client_id=16ebf6cc-38f7-497f-b064-7ca1d562727a&response_type=code&scope=Customer-financial:read:user Customer-ubication:read:user Customer-basic:read:user  Customer-document:write:user&redirect_uri=http://localhost:3000/code";
 
@@ -30,6 +29,7 @@ namespace FrontMobileApithon.Droid
             TextView conditionTxt = FindViewById<TextView>(Resource.Id.conditionTxt);
 
             WebView webViewAPI = (WebView)FindViewById(Resource.Id.webViewAPI);
+            webViewAPI.SetBackgroundColor(Color.Transparent);
 
             webViewAPI.SetWebViewClient(new WebViewClientClass(this, webViewAPI));
             webViewAPI.LoadUrl(urlLogin);
@@ -40,18 +40,20 @@ namespace FrontMobileApithon.Droid
             conditionTxt.Click += ConditionTxt_Click;
         }
 
+
         private void ConditionTxt_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(termsAndConditionsActivity));
             StartActivity(intent);
         }
     }
+
+    
+
     internal class WebViewClientClass :  WebViewClient
     {
         Activity mActivity;
         WebView webviewApi;
-        Intent intent;
-        public event EventHandler OnPageLoad;
 
         public WebViewClientClass(Activity mActivity, WebView _webviewApi)
         {
@@ -70,7 +72,7 @@ namespace FrontMobileApithon.Droid
                 //Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
                 webviewApi.Visibility = ViewStates.Gone;
 
-                intent = new Intent(mActivity, typeof(AccountsActivity));
+                Intent intent = new Intent(mActivity, typeof(AccountsActivity));
                 mActivity.StartActivity(intent);
             }
             return true;

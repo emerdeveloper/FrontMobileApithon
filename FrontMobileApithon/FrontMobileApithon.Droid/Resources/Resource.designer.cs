@@ -535,82 +535,97 @@ namespace FrontMobileApithon.Droid
 			public const int common_google_signin_btn_text_light_normal_background = 2130837526;
 			
 			// aapt resource value: 0x7f020017
-			public const int googleg_disabled_color_18 = 2130837527;
+			public const int folder = 2130837527;
 			
 			// aapt resource value: 0x7f020018
-			public const int googleg_standard_color_18 = 2130837528;
+			public const int googleg_disabled_color_18 = 2130837528;
 			
 			// aapt resource value: 0x7f020019
-			public const int Icon = 2130837529;
+			public const int googleg_standard_color_18 = 2130837529;
 			
 			// aapt resource value: 0x7f02001a
-			public const int logo = 2130837530;
+			public const int gray_circle = 2130837530;
 			
 			// aapt resource value: 0x7f02001b
-			public const int logoBanco = 2130837531;
+			public const int Icon = 2130837531;
 			
 			// aapt resource value: 0x7f02001c
-			public const int next = 2130837532;
+			public const int logo = 2130837532;
 			
 			// aapt resource value: 0x7f02001d
-			public const int notification_action_background = 2130837533;
+			public const int logoBanco = 2130837533;
 			
 			// aapt resource value: 0x7f02001e
-			public const int notification_bg = 2130837534;
+			public const int next = 2130837534;
 			
 			// aapt resource value: 0x7f02001f
-			public const int notification_bg_low = 2130837535;
+			public const int notification_action_background = 2130837535;
 			
 			// aapt resource value: 0x7f020020
-			public const int notification_bg_low_normal = 2130837536;
+			public const int notification_bg = 2130837536;
 			
 			// aapt resource value: 0x7f020021
-			public const int notification_bg_low_pressed = 2130837537;
+			public const int notification_bg_low = 2130837537;
 			
 			// aapt resource value: 0x7f020022
-			public const int notification_bg_normal = 2130837538;
+			public const int notification_bg_low_normal = 2130837538;
 			
 			// aapt resource value: 0x7f020023
-			public const int notification_bg_normal_pressed = 2130837539;
+			public const int notification_bg_low_pressed = 2130837539;
 			
 			// aapt resource value: 0x7f020024
-			public const int notification_icon_background = 2130837540;
-			
-			// aapt resource value: 0x7f02002f
-			public const int notification_template_icon_bg = 2130837551;
-			
-			// aapt resource value: 0x7f020030
-			public const int notification_template_icon_low_bg = 2130837552;
+			public const int notification_bg_normal = 2130837540;
 			
 			// aapt resource value: 0x7f020025
-			public const int notification_tile_bg = 2130837541;
+			public const int notification_bg_normal_pressed = 2130837541;
 			
 			// aapt resource value: 0x7f020026
-			public const int notify_panel_notification_icon_bg = 2130837542;
+			public const int notification_icon_background = 2130837542;
+			
+			// aapt resource value: 0x7f020034
+			public const int notification_template_icon_bg = 2130837556;
+			
+			// aapt resource value: 0x7f020035
+			public const int notification_template_icon_low_bg = 2130837557;
 			
 			// aapt resource value: 0x7f020027
-			public const int previous = 2130837543;
+			public const int notification_tile_bg = 2130837543;
 			
 			// aapt resource value: 0x7f020028
-			public const int vpi__tab_indicator = 2130837544;
+			public const int notify_panel_notification_icon_bg = 2130837544;
 			
 			// aapt resource value: 0x7f020029
-			public const int vpi__tab_selected_focused_holo = 2130837545;
+			public const int previous = 2130837545;
 			
 			// aapt resource value: 0x7f02002a
-			public const int vpi__tab_selected_holo = 2130837546;
+			public const int vpi__tab_indicator = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int vpi__tab_selected_pressed_holo = 2130837547;
+			public const int vpi__tab_selected_focused_holo = 2130837547;
 			
 			// aapt resource value: 0x7f02002c
-			public const int vpi__tab_unselected_focused_holo = 2130837548;
+			public const int vpi__tab_selected_holo = 2130837548;
 			
 			// aapt resource value: 0x7f02002d
-			public const int vpi__tab_unselected_holo = 2130837549;
+			public const int vpi__tab_selected_pressed_holo = 2130837549;
 			
 			// aapt resource value: 0x7f02002e
-			public const int vpi__tab_unselected_pressed_holo = 2130837550;
+			public const int vpi__tab_unselected_focused_holo = 2130837550;
+			
+			// aapt resource value: 0x7f02002f
+			public const int vpi__tab_unselected_holo = 2130837551;
+			
+			// aapt resource value: 0x7f020030
+			public const int vpi__tab_unselected_pressed_holo = 2130837552;
+			
+			// aapt resource value: 0x7f020031
+			public const int wizard_off = 2130837553;
+			
+			// aapt resource value: 0x7f020032
+			public const int wizard_on = 2130837554;
+			
+			// aapt resource value: 0x7f020033
+			public const int yellow_circle = 2130837555;
 			
 			static Drawable()
 			{
@@ -625,26 +640,26 @@ namespace FrontMobileApithon.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a002d
-			public const int action0 = 2131361837;
-			
-			// aapt resource value: 0x7f0a002a
-			public const int action_container = 2131361834;
-			
-			// aapt resource value: 0x7f0a0031
-			public const int action_divider = 2131361841;
-			
-			// aapt resource value: 0x7f0a002b
-			public const int action_image = 2131361835;
+			// aapt resource value: 0x7f0a002f
+			public const int action0 = 2131361839;
 			
 			// aapt resource value: 0x7f0a002c
-			public const int action_text = 2131361836;
+			public const int action_container = 2131361836;
 			
-			// aapt resource value: 0x7f0a003b
-			public const int actions = 2131361851;
+			// aapt resource value: 0x7f0a0033
+			public const int action_divider = 2131361843;
 			
-			// aapt resource value: 0x7f0a0043
-			public const int address = 2131361859;
+			// aapt resource value: 0x7f0a002d
+			public const int action_image = 2131361837;
+			
+			// aapt resource value: 0x7f0a002e
+			public const int action_text = 2131361838;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int actions = 2131361853;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int address = 2131361861;
 			
 			// aapt resource value: 0x7f0a0006
 			public const int adjust_height = 2131361798;
@@ -658,8 +673,8 @@ namespace FrontMobileApithon.Droid
 			// aapt resource value: 0x7f0a000c
 			public const int auto = 2131361804;
 			
-			// aapt resource value: 0x7f0a003e
-			public const int backBtn = 2131361854;
+			// aapt resource value: 0x7f0a0040
+			public const int backBtn = 2131361856;
 			
 			// aapt resource value: 0x7f0a0010
 			public const int blocking = 2131361808;
@@ -667,23 +682,26 @@ namespace FrontMobileApithon.Droid
 			// aapt resource value: 0x7f0a0016
 			public const int bottom = 2131361814;
 			
-			// aapt resource value: 0x7f0a002e
-			public const int cancel_action = 2131361838;
+			// aapt resource value: 0x7f0a0030
+			public const int cancel_action = 2131361840;
 			
-			// aapt resource value: 0x7f0a0026
-			public const int cardCarousel = 2131361830;
+			// aapt resource value: 0x7f0a0027
+			public const int cardCarousel = 2131361831;
 			
-			// aapt resource value: 0x7f0a0045
-			public const int cellphone = 2131361861;
+			// aapt resource value: 0x7f0a0047
+			public const int cellphone = 2131361863;
 			
-			// aapt resource value: 0x7f0a0036
-			public const int chronometer = 2131361846;
+			// aapt resource value: 0x7f0a0038
+			public const int chronometer = 2131361848;
 			
-			// aapt resource value: 0x7f0a0044
-			public const int city = 2131361860;
+			// aapt resource value: 0x7f0a0046
+			public const int city = 2131361862;
 			
-			// aapt resource value: 0x7f0a0022
-			public const int conditionTxt = 2131361826;
+			// aapt resource value: 0x7f0a0023
+			public const int conditionTxt = 2131361827;
+			
+			// aapt resource value: 0x7f0a001f
+			public const int continueBtn = 2131361823;
 			
 			// aapt resource value: 0x7f0a000d
 			public const int dark = 2131361805;
@@ -691,38 +709,41 @@ namespace FrontMobileApithon.Droid
 			// aapt resource value: 0x7f0a001d
 			public const int declarate = 2131361821;
 			
-			// aapt resource value: 0x7f0a0041
-			public const int documentId = 2131361857;
+			// aapt resource value: 0x7f0a0043
+			public const int documentId = 2131361859;
 			
-			// aapt resource value: 0x7f0a0042
-			public const int email = 2131361858;
+			// aapt resource value: 0x7f0a0044
+			public const int email = 2131361860;
 			
-			// aapt resource value: 0x7f0a003d
-			public const int end_padder = 2131361853;
+			// aapt resource value: 0x7f0a003f
+			public const int end_padder = 2131361855;
+			
+			// aapt resource value: 0x7f0a0020
+			public const int exitBtn = 2131361824;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int forever = 2131361809;
 			
-			// aapt resource value: 0x7f0a0038
-			public const int icon = 2131361848;
+			// aapt resource value: 0x7f0a003a
+			public const int icon = 2131361850;
 			
-			// aapt resource value: 0x7f0a003c
-			public const int icon_group = 2131361852;
+			// aapt resource value: 0x7f0a003e
+			public const int icon_group = 2131361854;
 			
 			// aapt resource value: 0x7f0a0009
 			public const int icon_only = 2131361801;
 			
-			// aapt resource value: 0x7f0a0027
-			public const int indicator = 2131361831;
+			// aapt resource value: 0x7f0a0028
+			public const int indicator = 2131361832;
 			
-			// aapt resource value: 0x7f0a0037
-			public const int info = 2131361847;
+			// aapt resource value: 0x7f0a0039
+			public const int info = 2131361849;
 			
 			// aapt resource value: 0x7f0a0012
 			public const int italic = 2131361810;
 			
-			// aapt resource value: 0x7f0a0040
-			public const int lastname = 2131361856;
+			// aapt resource value: 0x7f0a0042
+			public const int lastname = 2131361858;
 			
 			// aapt resource value: 0x7f0a000e
 			public const int light = 2131361806;
@@ -739,26 +760,26 @@ namespace FrontMobileApithon.Droid
 			// aapt resource value: 0x7f0a001c
 			public const int linearLayout2 = 2131361820;
 			
-			// aapt resource value: 0x7f0a0025
-			public const int linearLayout4 = 2131361829;
+			// aapt resource value: 0x7f0a0026
+			public const int linearLayoutCarousel = 2131361830;
 			
-			// aapt resource value: 0x7f0a0021
-			public const int linearLayoutConditions = 2131361825;
+			// aapt resource value: 0x7f0a0022
+			public const int linearLayoutConditions = 2131361826;
 			
 			// aapt resource value: 0x7f0a001a
 			public const int logo_bancolombia = 2131361818;
 			
-			// aapt resource value: 0x7f0a0030
-			public const int media_actions = 2131361840;
+			// aapt resource value: 0x7f0a0032
+			public const int media_actions = 2131361842;
+			
+			// aapt resource value: 0x7f0a002b
+			public const int myButton = 2131361835;
+			
+			// aapt resource value: 0x7f0a0041
+			public const int name = 2131361857;
 			
 			// aapt resource value: 0x7f0a0029
-			public const int myButton = 2131361833;
-			
-			// aapt resource value: 0x7f0a003f
-			public const int name = 2131361855;
-			
-			// aapt resource value: 0x7f0a0028
-			public const int next = 2131361832;
+			public const int next = 2131361833;
 			
 			// aapt resource value: 0x7f0a0008
 			public const int none = 2131361800;
@@ -766,29 +787,29 @@ namespace FrontMobileApithon.Droid
 			// aapt resource value: 0x7f0a0013
 			public const int normal = 2131361811;
 			
-			// aapt resource value: 0x7f0a003a
-			public const int notification_background = 2131361850;
+			// aapt resource value: 0x7f0a003c
+			public const int notification_background = 2131361852;
 			
-			// aapt resource value: 0x7f0a0033
-			public const int notification_main_column = 2131361843;
-			
-			// aapt resource value: 0x7f0a0032
-			public const int notification_main_column_container = 2131361842;
-			
-			// aapt resource value: 0x7f0a0024
-			public const int previous = 2131361828;
-			
-			// aapt resource value: 0x7f0a001f
-			public const int registerBtn = 2131361823;
-			
-			// aapt resource value: 0x7f0a0039
-			public const int right_icon = 2131361849;
+			// aapt resource value: 0x7f0a0035
+			public const int notification_main_column = 2131361845;
 			
 			// aapt resource value: 0x7f0a0034
-			public const int right_side = 2131361844;
+			public const int notification_main_column_container = 2131361844;
 			
-			// aapt resource value: 0x7f0a0023
-			public const int scrollView1 = 2131361827;
+			// aapt resource value: 0x7f0a0025
+			public const int previous = 2131361829;
+			
+			// aapt resource value: 0x7f0a002a
+			public const int registerBtn = 2131361834;
+			
+			// aapt resource value: 0x7f0a003b
+			public const int right_icon = 2131361851;
+			
+			// aapt resource value: 0x7f0a0036
+			public const int right_side = 2131361846;
+			
+			// aapt resource value: 0x7f0a0024
+			public const int scrollView1 = 2131361828;
 			
 			// aapt resource value: 0x7f0a001e
 			public const int simpleSwitch = 2131361822;
@@ -796,8 +817,8 @@ namespace FrontMobileApithon.Droid
 			// aapt resource value: 0x7f0a000a
 			public const int standard = 2131361802;
 			
-			// aapt resource value: 0x7f0a002f
-			public const int status_bar_latest_event_content = 2131361839;
+			// aapt resource value: 0x7f0a0031
+			public const int status_bar_latest_event_content = 2131361841;
 			
 			// aapt resource value: 0x7f0a0002
 			public const int tag_transition_group = 2131361794;
@@ -808,8 +829,8 @@ namespace FrontMobileApithon.Droid
 			// aapt resource value: 0x7f0a0004
 			public const int text2 = 2131361796;
 			
-			// aapt resource value: 0x7f0a0035
-			public const int time = 2131361845;
+			// aapt resource value: 0x7f0a0037
+			public const int time = 2131361847;
 			
 			// aapt resource value: 0x7f0a0005
 			public const int title = 2131361797;
@@ -829,14 +850,17 @@ namespace FrontMobileApithon.Droid
 			// aapt resource value: 0x7f0a0015
 			public const int underline = 2131361813;
 			
-			// aapt resource value: 0x7f0a0020
-			public const int webViewAPI = 2131361824;
+			// aapt resource value: 0x7f0a0049
+			public const int updateBtn = 2131361865;
+			
+			// aapt resource value: 0x7f0a0021
+			public const int webViewAPI = 2131361825;
 			
 			// aapt resource value: 0x7f0a000b
 			public const int wide = 2131361803;
 			
-			// aapt resource value: 0x7f0a0046
-			public const int work = 2131361862;
+			// aapt resource value: 0x7f0a0048
+			public const int work = 2131361864;
 			
 			static Id()
 			{

@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
-
+using Android;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.App;
 using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
@@ -14,7 +18,7 @@ using static Android.Support.V4.View.ViewPager;
 
 namespace FrontMobileApithon.Droid.Implementations.Files
 {
-    public class CarouselAdapter : PagerAdapter, IOnPageChangeListener
+    public class CarouselAdapter : PagerAdapter
     {
         Context context;
         int[] folderList = { };
@@ -40,9 +44,34 @@ namespace FrontMobileApithon.Droid.Implementations.Files
 
         public override Java.Lang.Object InstantiateItem(ViewGroup container, int position)
         {
-            ImageView imageView = new ImageView(context);
-            imageView.SetScaleType(ImageView.ScaleType.FitCenter);
+            ImageButton imageView = new ImageButton(context);
+            imageView.SetBackgroundColor(Color.Transparent);
+            imageView.SetScaleType(ImageButton.ScaleType.FitCenter);
             imageView.SetImageResource(folderList[position]);
+           
+            imageView.Click += (o, e) =>
+            {
+                string[] permissions = {
+                Manifest.Permission.ReadExternalStorage
+                };
+
+                if (ActivityCompat.ShouldShowRequestPermissionRationale((Activity)context, Manifest.Permission.ReadExternalStorage))
+                {
+                    /*
+                    ScrollView scrollView = this.FindViewById<ScrollView>(Resource.Id.scrollView);
+
+                    Snackbar.Make(scrollView, AppSettings.GetResourceMessage(Constants.Permissions.AndroidExternalWriteMessage, Language.ES),
+                        Snackbar.LengthIndefinite).SetAction(AppSettings.GetResourceMessage(Constants.ResoursesText.OkButton, Language.ES), new Action<View>(delegate (View obj) {
+                            ActivityCompat.RequestPermissions(this, permissions, (int)PermissionsRequestCode.ReceiptCreated);
+                        })).Show();*/
+                }
+                else
+                {
+                    // Contact permissions have not been granted yet. Request them directly.
+                    ActivityCompat.RequestPermissions((Activity)context, permissions, 0);
+                }
+                
+            }; 
 
             Toast.MakeText(context, position + "", ToastLength.Short).Show();
 
@@ -51,24 +80,19 @@ namespace FrontMobileApithon.Droid.Implementations.Files
             return imageView;
         }
 
+        public void Files()
+        {
+            Intent intent = new Intent();
+            intent.SetAction(Intent.ActionGetContent);
+
+            //intent.AddCategory(Intent.CategoryOpenable);
+            intent.SetType("*/*");
+            ((Activity)context).StartActivityForResult(Intent.CreateChooser(intent, "Select file"), 0);
+        }
+
         public override void DestroyItem(ViewGroup container, int position, Java.Lang.Object @object)
         {
             ((ViewPager)container).RemoveView((ImageView)@object);
-        }
-
-        public void OnPageScrollStateChanged(int state)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnPageScrolled(int position, float positionOffset, int positionOffsetPixels)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnPageSelected(int position)
-        {
-            throw new NotImplementedException();
         }
     }
 }

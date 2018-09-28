@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.App;
@@ -15,18 +17,21 @@ using Com.Viewpagerindicator;
 
 namespace FrontMobileApithon.Droid.Implementations.Files
 {
-    [Activity(Label = "FrontMobileApithon.Droid", MainLauncher = false, Icon = "@drawable/icon")]
-    public class DataFileActivity : Activity, Android.Support.V4.View.ViewPager.IOnPageChangeListener
+    [Activity(Label = "FrontMobileApithon.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    public class DataFileActivity : Activity
     {
-        ViewPager cardCarousel;
+        ViewPager foldersCarousel;
+        string file;
 
-        public int[] cardList = {
-                Resource.Drawable.carpeta,
-                Resource.Drawable.carpeta,
-                Resource.Drawable.carpeta,
-                Resource.Drawable.carpeta,
-                Resource.Drawable.carpeta
+        public int[] folderCarousel = {
+                Resource.Drawable.folder,
+                Resource.Drawable.folder,
+                Resource.Drawable.folder,
+                Resource.Drawable.folder,
+                Resource.Drawable.folder
             };
+
+        CarouselAdapter carouselAdapter;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,43 +39,48 @@ namespace FrontMobileApithon.Droid.Implementations.Files
 
             SetContentView(Resource.Layout.chooseFiles);
 
-            cardCarousel = FindViewById<ViewPager>(Resource.Id.cardCarousel);
+            foldersCarousel = FindViewById<ViewPager>(Resource.Id.cardCarousel);
             ImageButton next = FindViewById<ImageButton>(Resource.Id.next);
             ImageButton previous = FindViewById<ImageButton>(Resource.Id.previous);
-            CarouselAdapter carouselAdapter = new CarouselAdapter(this, cardList);
-            cardCarousel.Adapter = carouselAdapter;
-            cardCarousel.AddOnPageChangeListener(this);
+            carouselAdapter = new CarouselAdapter(this, folderCarousel);
+            foldersCarousel.Adapter = carouselAdapter;
             CirclePageIndicator indicator = FindViewById<CirclePageIndicator>(Resource.Id.indicator);
-            indicator.SetViewPager(cardCarousel);
+            indicator.SetViewPager(foldersCarousel);
 
             next.Click += Next_Click;
             previous.Click += Previous_Click;
 
         }
 
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            if (grantResults.Length > 0 && grantResults[0] == Permission.Granted)
+            {
+                carouselAdapter.Files();
+            }
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (data != null)
+            {
+                file = data.DataString;
+            }
+        }
+
         void Next_Click(object sender, EventArgs e)
         {
-            cardCarousel.SetCurrentItem(cardCarousel.CurrentItem + 1, true);
+            foldersCarousel.SetCurrentItem(foldersCarousel.CurrentItem + 1, true);
+            
         }
 
         void Previous_Click(object sender, EventArgs e)
         {
-            cardCarousel.SetCurrentItem(cardCarousel.CurrentItem - 1, true);
-        }
-
-        public void OnPageScrollStateChanged(int state)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public void OnPageScrolled(int position, float positionOffset, int positionOffsetPixels)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public void OnPageSelected(int position)
-        {
-            //throw new NotImplementedException();
+            foldersCarousel.SetCurrentItem(foldersCarousel.CurrentItem - 1, true);
         }
     }
 }
