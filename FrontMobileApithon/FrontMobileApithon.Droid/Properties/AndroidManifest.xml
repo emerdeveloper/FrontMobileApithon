@@ -6,7 +6,7 @@
 	<permission android:name="com.name.name.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 	<uses-permission android:name="com.name.name.permission.C2D_MESSAGE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	<application android:label="FrontMobileApithon.Droid" android:icon="@drawable/Icon" />
+	<application android:label="FrontMobileApithon.Droid" android:icon="@drawable/logo_alim" />
 	<!--<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />-->
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />
 	<!-- app center push - START 
