@@ -27,7 +27,7 @@ namespace FrontMobileApithon.Services
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
                 var url = Constants.Url.AggregationServicePrefix;
-                var response = await client.PostAsync(url, content);
+                var response = await client.PostAsync(Constants.Url.BaseAdressBluemix+url, content);
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -72,7 +72,7 @@ namespace FrontMobileApithon.Services
                 var client = new HttpClient();
 				client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
 				var url = UpdateClientServicePrefix;
-                var response = await client.PostAsync(url, content);
+                var response = await client.PostAsync(Constants.Url.BaseAdressBluemix+url, content);
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -118,7 +118,7 @@ namespace FrontMobileApithon.Services
                 var client = new HttpClient();
 				client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
 				var url = GetClientServicePrefix;
-                var response = await client.PostAsync(url, content);
+                var response = await client.PostAsync(Constants.Url.BaseAdressBluemix+ GetClientServicePrefix, content);
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -162,7 +162,7 @@ namespace FrontMobileApithon.Services
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
                 var url = MovementsServicePrefix;//string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
+                var response = await client.PostAsync(Constants.Url.BaseAdressBluemix + url, content);
 
                 if (!response.IsSuccessStatusCode)
                 {

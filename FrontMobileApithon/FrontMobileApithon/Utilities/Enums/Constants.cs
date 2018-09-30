@@ -13,11 +13,11 @@ namespace FrontMobileApithon.Utilities.Enums
             public const string BaseAdress = "https://api.us.apiconnect.ibmcloud.com/bancolombiabluemix-dev";
             public const string TokenSecurity = "/sandbox/security/oauth-otp/oauth2/token";
 
-            public const string BaseAdressBluemix = "http://pyme.k8s-bancolombia-dev.us-south.containers.mybluemix.net";
-            public const string MovementsServicePrefix = "/getMovements";
-            public const string GetClientServicePrefix = "/getClient";
-            public const string UpdateClientInfoServicePrefix = "/updateClient";
-            public const string AggregationServicePrefix = "/aggregation";
+            public const string BaseAdressBluemix = "http://173.193.75.209:";
+            public const string MovementsServicePrefix = "32061/getMovements";
+            public const string GetClientServicePrefix = "31333/getClient";
+            public const string UpdateClientInfoServicePrefix = "31333/updateClient";
+            public const string AggregationServicePrefix = "31864/aggregation";
         }
 
         public struct Messages
