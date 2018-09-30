@@ -70,8 +70,8 @@ namespace FrontMobileApithon.Services
                 var request = JsonConvert.SerializeObject(model);
                 var content = new StringContent(request, Encoding.UTF8, "application/json");
                 var client = new HttpClient();
-                client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
-                var url = UpdateClientServicePrefix;
+				client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
+				var url = UpdateClientServicePrefix;
                 var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)
@@ -116,8 +116,8 @@ namespace FrontMobileApithon.Services
                 var request = JsonConvert.SerializeObject(model);
                 var content = new StringContent(request, Encoding.UTF8, "application/json");
                 var client = new HttpClient();
-                client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
-                var url = GetClientServicePrefix;
+				client.BaseAddress = new Uri(Constants.Url.BaseAdressBluemix);
+				var url = GetClientServicePrefix;
                 var response = await client.PostAsync(url, content);
 
                 if (!response.IsSuccessStatusCode)

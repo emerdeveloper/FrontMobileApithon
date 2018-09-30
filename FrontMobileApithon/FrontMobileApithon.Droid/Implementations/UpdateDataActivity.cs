@@ -105,18 +105,21 @@ namespace FrontMobileApithon.Droid.Implementations
                     email = email.Text,
                     firstName = name.Text,
                     lastName = lastname.Text,
-                    phone = cellphone.Text
+                    phone = cellphone.Text,
+					ocupation = work.Text,
                 };
 
                 var arrayListDataFotUpdate = new Models.Request.UpdateClient.UpdateClientRequest
                 {
                     data = new List<Models.Request.UpdateClient.Datum>(),
                     _id = HomeActivity.GetInstance().clientInfo._id,
-                    _rev = "3-50319a848d2361ca12528981602f47ca",
+                    _rev = HomeActivity.GetInstance().clientInfo._rev,
                 };
                 arrayListDataFotUpdate.data.Add(clientInfo);
 
-                var response = ApiService.UpdateInfo(Constants.Url.UpdateClientInfoServicePrefix, arrayListDataFotUpdate).Result;
+                var response = ApiService.UpdateInfo(
+					Constants.Url.UpdateClientInfoServicePrefix, 
+					arrayListDataFotUpdate).Result;
 
                 if (!response.IsSuccess)
                 {
@@ -139,8 +142,8 @@ namespace FrontMobileApithon.Droid.Implementations
                
                 var Client = (Models.Responses.UpdateClient.UpdateClientResponse)response.Result;
 
-               /* if (Client.data[0].header.status.Equals("200"))
-                {*/
+               if (Client.data[0].header.status.Equals("200"))
+                {
 					RunOnUiThread(() =>
 					{
 
@@ -149,7 +152,7 @@ namespace FrontMobileApithon.Droid.Implementations
 						Android.App.AlertDialog.Builder dialogs = new AlertDialog.Builder(this);
                     AlertDialog alerts = dialogs.Create();
                     alerts.SetTitle("Operación Exitosa");
-                    alerts.SetMessage("Su información ha sido actualizada");
+                    alerts.SetMessage("Su información ha sido actualizada" );
                     alerts.SetButton("ACEPTAR", (c, ev) =>
                     {
                         var intent = new Intent(this, typeof(AccountsActivity));
@@ -159,7 +162,7 @@ namespace FrontMobileApithon.Droid.Implementations
                     alerts.Show();
 					});
 					return;
-               /* }
+               }
 
 				RunOnUiThread(() =>
 				{
@@ -175,85 +178,9 @@ namespace FrontMobileApithon.Droid.Implementations
                 alert.SetButton2("CANCEL", (c, ev) => { });
                 alert.Show();
 				});
-				return;*/
+				return;
             });
-
-         
-            /* clientInfo = new ClientInfo
-             {
-                 address = Client.data[0].address,
-                 cellPhone = Client.data[0].cellPhone,
-                 declarationReady = Client.data[0].declarationReady,
-                 email = Client.data[0].email,
-                 firstName = Client.data[0].firstName,
-                 address = Client.data[0].address,
-             }; */
-
-
-            //Armando el objeto para consumir API movements
-            //No borrar Declara o nó
-            /*
-            var header = new Models.Request.Movements.Header
-            {
-                token = access_token,
-            };
-
-            var datum = new Models.Request.Movements.Datum
-            {
-                header = header,
-            };
-
-            var requestModel = new Models.Request.Movements.RootObject
-            {
-                data = new List<Models.Request.Movements.Datum>()
-            };
-            requestModel.data.Add(datum);
-
-
-
-
-
-            var ResponseValiateStatement = ApiService.PostGetMovements(
-                                            access_token,
-                                            Constants.Url.MovementsServicePrefix,
-                                            requestModel);
-
-            if (!ResponseValiateStatement.Result.IsSuccess)
-            {
-                mActivity.RunOnUiThread(() =>
-                {
-                    progressBar.Visibility = Android.Views.ViewStates.Gone;
-                    Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(mActivity);
-                    AlertDialog alert = dialog.Create();
-                    alert.SetTitle("ALERTA");
-                    alert.SetMessage("Hubo un error inesperado");
-                    alert.SetButton("ACEPTAR", (c, ev) =>
-                    { });
-                    alert.SetButton2("CANCEL", (c, ev) => { });
-                    alert.Show();
-                    return;
-                });
-            }
-
-            mActivity.RunOnUiThread(() =>
-            {
-                progressBar.Visibility = Android.Views.ViewStates.Gone;
-            contentLinearLayout.Visibility = Android.Views.ViewStates.Visible;
-            });
-            var Movements = (Models.Responses.Movements.RootObject)ResponseValiateStatement.Result.Result;
-            if (Movements.data[0].header.Status.Equals("200"))
-            {
-                if (Movements.data[0].declaration)
-                {
-                    //TODO: Crear intent para que salga que debe declarar
-
-                    intent = new Intent(mActivity, typeof(AccountsActivity));
-                    mActivity.StartActivity(intent);
-                    return;
-                }
-
-                // TODO: No declara
-            }*/
+			
         }
 
     }

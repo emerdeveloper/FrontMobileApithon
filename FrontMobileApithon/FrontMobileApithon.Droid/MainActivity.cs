@@ -69,13 +69,15 @@ namespace FrontMobileApithon.Droid
             contentWebview = FindViewById<LinearLayout>(Resource.Id.contentWebview);
             contentSplash = FindViewById<LinearLayout>(Resource.Id.contentSplash);
             conditionTxt = FindViewById<TextView>(Resource.Id.conditionTxt);
-            webViewAPI = (WebView)FindViewById(Resource.Id.webViewAPI);
             progressBar = FindViewById<LinearLayout>(Resource.Id.ProgressBar);
-            webViewAPI.SetWebViewClient(new WebViewClientClass(this, webViewAPI, progressBar, contentWebview));
+            webViewAPI = (WebView)FindViewById(Resource.Id.webViewAPI);
+			webViewAPI.Settings.JavaScriptEnabled = true;
+			//webViewAPI.AddJavascriptInterface(new JavaScriptInterfaces(this), "HtmlViewer");
+			webViewAPI.SetWebViewClient(new WebViewClientClass(this, webViewAPI, progressBar, contentWebview));
             webViewAPI.LoadUrl(urlLogin);
 
-            WebSettings websettings = webViewAPI.Settings;
-            websettings.JavaScriptEnabled = true;
+            /*WebSettings websettings = webViewAPI.Settings;
+            websettings.JavaScriptEnabled = true;*/
 
             contentWebview.Visibility = ViewStates.Gone;
             contentSplash.Visibility = ViewStates.Visible;
@@ -128,17 +130,15 @@ namespace FrontMobileApithon.Droid
             CheckConnection = new CheckConnection();
         }
 
-        //Give the host application a chance to take over the control when a new URL is about to be loaded in the current WebView.  
-        public override bool ShouldOverrideUrlLoading(WebView view, string url)
+		//Give the host application a chance to take over the control when a new URL is about to be loaded in the current WebView.  
+		public override bool ShouldOverrideUrlLoading(WebView view, string url)
         {
             view.LoadUrl(url);
             if (url.Contains("http://localhost:3000/code?code="))
             {
                 string token = url.Substring(url.IndexOf("=") + 1);
-                //Toast.MakeText(mActivity, token + "", ToastLength.Short).Show();
-                webviewApi.Visibility = ViewStates.Invisible;
-                CallApi(token);
-                //var response = ApiService.PostGetToken(token);
+                webviewApi.Visibility = ViewStates.Invisible;				
+				CallApi(token);
             }
             return true;
         }
@@ -171,6 +171,7 @@ namespace FrontMobileApithon.Droid
                 var access_token = ((GetTokenResponse)response.Result.Result).access_token;
 
 				//GetClient
+				/*Init: Creating object to request*/
 				var header = new Models.Request.Client.Header
                 {
                     token = access_token,
@@ -186,8 +187,8 @@ namespace FrontMobileApithon.Droid
                     data = new List<Models.Request.Client.Datum>()
                 };
                 requestModel.data.Add(datum);
-
-                var ResponseClientInfo = ApiService.GetClientInfo(
+				/*Finish: Creating object to request*/
+				var ResponseClientInfo = ApiService.GetClientInfo(
                                                 access_token,
                                                 Constants.Url.GetClientServicePrefix,
                     requestModel).Result;
@@ -232,11 +233,11 @@ namespace FrontMobileApithon.Droid
                 mActivity.StartActivity(intent);
                 mActivity.Finish();
 				});
-				/* */
 			});
 
         }
     }
+	
 }
 
 
