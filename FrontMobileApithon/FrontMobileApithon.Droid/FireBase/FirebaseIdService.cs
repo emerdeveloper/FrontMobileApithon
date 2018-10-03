@@ -15,12 +15,20 @@ namespace FrontMobileApithon.Droid.FireBase
 {
     [Service]
     [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
-    class FirebaseIdService: FirebaseInstanceIdService
+    public class FirebaseIdService: FirebaseInstanceIdService
     {
+        const string TAG = "MyFirebaseIIDService";
         public override void OnTokenRefresh()
         {
-            base.OnTokenRefresh();
-            Android.Util.Log.Debug("Refreshed Token:", FirebaseInstanceId.Instance.Token);
+            var refreshedToken = FirebaseInstanceId.Instance.Token;
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine(TAG + " * Token * " + "refreshedToken");
+#endif
+            SendRegistrationToServer(refreshedToken);
+        }
+        void SendRegistrationToServer(string token)
+        {
+            // Add custom implementation, as needed.
         }
     }
 }

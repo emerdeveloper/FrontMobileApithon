@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorControlNormal">@color/colorControlNormal</item>
+    <item name="colorControlActivated">@color/colorControlActivated</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="android:windowLightStatusBar">false</item>
+    <item name="android:windowBackground">@color/colorActivity</item>
+    <item name="colorControlHighlight">@color/colorControlNormal</item>
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowTranslucentStatus">false</item>
+    <item name="android:statusBarColor">#000000</item>
+  </style>
+
+  <style name="AppTheme.SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/progressColor</item>
+    <item name="colorControlHighlight">@color/colorControlNormal</item>
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>
+
+  <style name="AppTheme.TabTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorControlNormal">@color/general_yellow</item>
+    <item name="colorControlActivated">@color/general_yellow</item>
+    <item name="colorControlHighlight">@color/colorControlNormal</item>
+    <item name="colorPrimary">@color/general_yellow</item>
+    <item name="colorPrimaryDark">@color/general_yellow</item>
+    <item name="colorAccent">@color/general_yellow</item>
+    <item name="android:textColorPrimary">@color/general_yellow</item>
+    <item name="android:textColorSecondary">@color/text_subtitles</item>
+  </style>
+
+  <style name="AppTheme.TabTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorControlNormal">@color/general_yellow</item>
+    <item name="colorControlActivated">@color/general_yellow</item>
+    <item name="colorControlHighlight">@color/colorControlNormal</item>
+    <item name="colorPrimary">@color/general_yellow</item>
+    <item name="colorPrimaryDark">@color/general_yellow</item>
+    <item name="colorAccent">@color/general_yellow</item>
+    <item name="android:textColorPrimary">@color/general_yellow</item>
+    <item name="android:textColorSecondary">@color/text_subtitles</item>
+  </style>
+
+  <style name="AppThemeInput" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorControlNormal">@color/colorLinePrimary</item>
+    <item name="colorControlActivated">@color/colorLinePrimary</item>
+    <item name="colorControlHighlight">@color/colorControlNormal</item>
+    <item name="android:textColor">@color/colorLinePrimary</item>
+    <item name="android:textColorHint">@color/colorLinePrimary</item>
+  </style>
+
+  <!--Mood Style-->
+  <style name="title">
+    <item name="android:textColor">@color/general_blue</item>
+    <item name="android:textSize">@dimen/title</item>
+  </style>
+
+  <style name="sub_title">
+    <item name="android:textColor">@color/text_subtitles</item>
+    <item name="android:textSize">@dimen/sub_title</item>
+  </style>
+
+  <style name="title_message_dialog">
+    <item name="android:textColor">@color/text_black</item>
+    <item name="android:textSize">@dimen/textInput</item>
+  </style>
+  <style name="text_view_message_dialog">
+    <item name="android:textColor">@color/text_subtitles</item>
+    <item name="android:textSize">@dimen/text_message_dialog</item>
+  </style>
+
+  <style name="text_long">
+    <item name="android:textColor">@color/text_subtitles</item>
+    <item name="android:textSize">@dimen/text_long</item>
+  </style>
+
+  <style name="chart_style">
+    <item name="android:layout_width">@dimen/chart_size</item>
+    <item name="android:layout_height">@dimen/chart_size</item>
+  </style>
+
+  <!--EditTex-Component-->
+  <style name="AppThemeInput" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorAccent">@color/general_blue</item>
+  </style>
+  <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
+    <item name="android:textColor">@color/text_gray_1</item>
+    <item name="android:textSize">@dimen/text_message_dialog</item>
+  </style>
+
+  <style name="text_view">
+    <item name="android:textColor">@color/text_gray_1</item>
+    <item name="android:textSize">@dimen/textInput</item>
+  </style>
+
+  <style name="text_view_b">
+    <item name="android:textColor">@color/general_blue</item>
+    <item name="android:textSize">@dimen/textInput</item>
+  </style>
+
+  <style name="text_view_c">
+    <item name="android:textColor">@color/text_black</item>
+    <item name="android:textSize">@dimen/textInput</item>
+  </style>
+
+  <style name="text_note">
+    <item name="android:textColor">@color/text_gray_1</item>
+    <item name="android:textSize">@dimen/text_xx_small</item>
+  </style>
+
+  <style name="text_card">
+    <item name="android:textColor">@color/text_gray_1</item>
+    <item name="android:textSize">@dimen/text_card</item>
+  </style>
+
+  <style name="title_card">
+    <item name="android:textColor">@color/text_black</item>
+    <item name="android:textSize">@dimen/text_small</item>
+  </style>
+
+  <style name="switch_theme" parent="Theme.AppCompat.Light">
+    <item name="thumbTint">#FFFFFF</item>
+    <item name="trackTint">@drawable/switch_color</item>
+    <item name="android:textColor">@color/text_subtitles</item>
+    <item name="android:textSize">@dimen/text_small</item>
+  </style>
+
+  <style name="text_b_blue">
+    <item name="android:textColor">@color/text_b_blue</item>
+    <item name="android:textSize">@dimen/text_b_blue</item>
+  </style>
+
+  <style name="text_botton_blue">
+    <item name="android:textColor">@color/text_b_blue</item>
+    <item name="android:textSize">@dimen/sub_title</item>
+  </style>
+
+  <style name="text_botton_link">
+    <item name="android:textColor">@color/general_blue</item>
+    <item name="android:textSize">@dimen/text_small</item>
+  </style>
+</resources>

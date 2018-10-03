@@ -10,10 +10,14 @@ namespace FrontMobileApithon.Utilities.Enums
     {
         public struct Url
         {
-            public const string BaseAdress = "http://it-ebooks-api.info";
-            public const string BaseAdressApi = "/v1/";
-            public const string Search = "search";
-            public const string Book = "book";
+            public const string BaseAdress = "https://api.us.apiconnect.ibmcloud.com/bancolombiabluemix-dev";
+            public const string TokenSecurity = "/sandbox/security/oauth-otp/oauth2/token";
+
+            public const string BaseAdressBluemix = "http://173.193.75.209:";
+            public const string MovementsServicePrefix = "32061/getMovements";
+            public const string GetClientServicePrefix = "31333/getClient";
+            public const string UpdateClientInfoServicePrefix = "31333/updateClient";
+            public const string AggregationServicePrefix = "31864/aggregation";
         }
 
         public struct Messages
@@ -29,11 +33,6 @@ namespace FrontMobileApithon.Utilities.Enums
         {
             public const string SuccessResponse = "OK";
             public const string ErrorResponse = "Error";
-        }
-
-        public struct Activity
-        {
-            public const string Books = "Libros";
         }
     }
 }

@@ -5,99 +5,120 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
     <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:id="@+id/linearLayout1">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:background="@android:color/transparent"
-            android:id="@+id/toolBar"
-            android:textSize="14dp"
-            android:layout_weight="5"
-            android:text="" />
-        <ImageView
-            android:layout_width="5.5dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/logo_bancolombia"
-            android:src="@drawable/alim_medio"
-            android:layout_marginRight="0.0dp" />
-    </LinearLayout>
-    <TextView
-        android:text="jngsijfnñjafnhguihddfhgiuadhfguiadhfuighadfiughauidfuiaf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:gravity="center"
-        android:id="@+id/capable"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="#00448c" />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:id="@+id/linearLayout2">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="0.7"
-            android:id="@+id/declarate"
-            android:textSize="15dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="1dp"
-            android:background="@android:color/transparent"
-            android:text="¿Deseas que Bancolombia S.A te asesore en tu declaración de renta?" />
-        <Switch
-            android:id="@+id/simpleSwitch"
-            android:layout_width="0dp"
-            android:gravity="center"
+        android:layout_height="match_parent"
+        android:id="@+id/contentLinearLayout"
+        android:visibility="gone">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3" />
+            android:background="@android:color/transparent"
+            android:id="@+id/linearLayout1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@android:color/transparent"
+                android:id="@+id/toolBar"
+                android:textSize="14dp"
+                android:layout_weight="5"
+                android:text="" />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/logo_bancolombia"
+                android:src="@drawable/medium"
+                android:layout_marginRight="0.0dp" />
+        </LinearLayout>
+        <TextView
+            android:text="jngsijfnñjafnhguihddfhgiuadhfguiadhfuighadfiughauidfuiaf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:id="@+id/capable"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#00448c" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="0.7"
+                android:id="@+id/declarate"
+                android:textSize="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="1dp"
+                android:background="@android:color/transparent"
+                android:text="¿Deseas que Bancolombia S.A te asesore en tu declaración de renta?" />
+            <Switch
+                android:id="@+id/simpleSwitch"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3" />
+        </LinearLayout>
+        <Button
+            android:text="CONTINUAR"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/continueBtn"
+            android:textColor="#00448c"
+            android:layout_centerHorizontal="true"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/button_border"
+            android:padding="10dip" />
+        <Button
+            android:text="SALIR"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="29.5dp"
+            android:id="@+id/exitBtn"
+            android:textColor="#00448c"
+            android:layout_centerHorizontal="true"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/button_border"
+            android:padding="10dip" />
     </LinearLayout>
-    <Button
-        android:text="CONTINUAR"
+<!--Progress-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="5dp"
-        android:id="@+id/continueBtn"
-        android:textColor="#00448c"
-        android:layout_centerHorizontal="true"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:background="@drawable/button_border"
-        android:padding="10dip" />
-    <Button
-        android:text="SALIR"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="29.5dp"
-        android:id="@+id/exitBtn"
-        android:textColor="#00448c"
-        android:layout_centerHorizontal="true"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:background="@drawable/button_border"
-        android:padding="10dip" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/ProgressBar"
+        android:gravity="center">
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:progress="25" />
+    </LinearLayout>
 </LinearLayout>

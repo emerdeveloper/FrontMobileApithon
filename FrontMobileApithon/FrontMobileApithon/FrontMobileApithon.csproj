@@ -34,18 +34,51 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Request\Aggregation\Datum.cs" />
+    <Compile Include="Models\Request\Aggregation\Document.cs" />
+    <Compile Include="Models\Request\Aggregation\Header.cs" />
+    <Compile Include="Models\Request\Aggregation\RootObject.cs" />
+    <Compile Include="Models\Request\Client\Datum.cs" />
+    <Compile Include="Models\Request\Client\getClientRequest.cs" />
+    <Compile Include="Models\Request\Client\Header.cs" />
+    <Compile Include="Models\Request\Movements\Datum.cs" />
+    <Compile Include="Models\Request\Movements\Header.cs" />
+    <Compile Include="Models\Request\Movements\RootObject.cs" />
+    <Compile Include="Models\Request\UpdateClient\Datum.cs" />
+    <Compile Include="Models\Request\UpdateClient\UpdateClientRequest.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\Responses\Aggregation\Datum.cs" />
+    <Compile Include="Models\Responses\Aggregation\Header.cs" />
+    <Compile Include="Models\Responses\Aggregation\RootObject.cs" />
+    <Compile Include="Models\Responses\Client\Datum.cs" />
+    <Compile Include="Models\Responses\Client\getClientResponse.cs" />
+    <Compile Include="Models\Responses\GetTokenResponse.cs" />
+    <Compile Include="Models\Responses\Movements\Datum.cs" />
+    <Compile Include="Models\Responses\Movements\Header.cs" />
+    <Compile Include="Models\Responses\Movements\RootObject.cs" />
+    <Compile Include="Models\Responses\UpdateClient\Datum.cs" />
+    <Compile Include="Models\Responses\UpdateClient\Header.cs" />
+    <Compile Include="Models\Responses\UpdateClient\UpdateClientResponse.cs" />
     <Compile Include="Models\SearchRequest.cs" />
     <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiConsumer.cs" />
     <Compile Include="Services\CheckConnection.cs" />
     <Compile Include="Utilities\Enums\Constants.cs" />
+    <Compile Include="Models\ClientInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AppCenter.1.9.0\lib\portable-net45+win8+wpa81+wp8\Microsoft.AppCenter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Push, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AppCenter.Push.1.9.0\lib\portable-net45+win8+wpa81+wp8\Microsoft.AppCenter.Push.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>

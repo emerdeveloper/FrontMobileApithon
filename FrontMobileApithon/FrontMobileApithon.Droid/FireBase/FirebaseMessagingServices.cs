@@ -17,7 +17,7 @@ namespace FrontMobileApithon.Droid.FireBase
 {
     [Service]
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
-    class FirebaseMessagingServices : FirebaseMessagingService
+    public class FirebaseMessagingServices : FirebaseMessagingService
     {
         public override void OnMessageReceived(RemoteMessage message)
         {

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="2"
+    android:gravity="center">
+    <ImageView
+        android:src="@drawable/splashImage"
+        android:id="@+id/splashLogoImage"
+        tools:visibility="visible"
+        android:layout_height="144dp"
+        android:layout_width="144dp"
+        android:layout_weight="2" />
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1">
+        <ProgressBar
+            android:id="@+id/splashLoadingProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
+        <TextView
+            android:id="@+id/appVersionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Versión 1.0"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/loadingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="Cargando..." />
+    </LinearLayout>
+</LinearLayout>

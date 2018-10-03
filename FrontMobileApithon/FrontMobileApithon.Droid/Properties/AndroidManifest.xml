@@ -1,17 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="co.com.bancolombia.frontmobileapithon" android:installLocation="auto" android:versionCode="1" android:versionName="1.0">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<permission android:name="com.name.name.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 	<uses-permission android:name="com.name.name.permission.C2D_MESSAGE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	<application android:label="FrontMobileApithon.Droid" android:icon="@drawable/Icon" />
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="27" />
-	<!--<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="24" />-->
-	<application android:label="FrontMobileApithon.Droid">
-		<!---FireBase-->
+	<application android:label="FrontMobileApithon.Droid" android:icon="@drawable/logo_alim" />
+	<!--<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />-->
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />
+	<!-- app center push - START 
+	<permission android:protectionLevel="signature" android:name="${applicationId}.permission.C2D_MESSAGE" />
+	<uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
+	 app center push - END -->
+	<application android:label="FrontMobileApithon.Droid" android:theme="@style/AppTheme">
+		<!-- Add these lines -->
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
@@ -20,16 +23,25 @@
 				<category android:name="${applicationId}" />
 			</intent-filter>
 		</receiver>
-
-    <service android:name="NotificationService" android:exported="false">
-    </service>
-    
-    <receiver android:name="BootReceiver">
-      <intent-filter>
-        <action android:name="co.com.bancolombia.frontmobileapithon" />
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
-      </intent-filter>
-    </receiver>
+		<!-- end of section to add -->
+		<!---FireBase
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				<category android:name="${applicationId}" />
+			</intent-filter>
+		</receiver>
+		<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/Icon" />
+		FireBase-->
+		<service android:name="NotificationService" android:exported="false"></service>
+		<receiver android:name="BootReceiver">
+			<intent-filter>
+				<action android:name="co.com.bancolombia.frontmobileapithon" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
 		<!---FireBase-->
 	</application>
 </manifest>

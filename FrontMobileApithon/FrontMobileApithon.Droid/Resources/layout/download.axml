@@ -32,11 +32,11 @@
             android:layout_weight="5"
             android:text="" />
         <ImageView
-            android:layout_width="5.5dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/logo_bancolombia"
-            android:src="@drawable/alim_medio"
+            android:src="@drawable/medium"
             android:layout_marginRight="0.0dp" />
     </LinearLayout>
     <TextView
@@ -56,30 +56,45 @@
     <Button
         android:text="Más información"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/moreInfoBtn"
         android:textColor="#ff033076"
         android:background="@android:color/transparent"
         android:layout_centerHorizontal="true"
-        android:textSize="10dp"
-        android:textStyle="bold"
-        android:padding="10dip" />
-    <Button
-        android:text="DESCARGAR DECLARACIÓN DE RENTA"
+        android:textSize="10dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/downloadBtn"
-        android:textColor="#ff033076"
-        android:layout_centerHorizontal="true"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:background="@drawable/button_border"
-        android:padding="10dip" />
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:id="@+id/linearLayout2">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:id="@+id/doc"
+            android:src="@drawable/declaracionfile"
+            android:layout_marginRight="0.0dp" />
+        <Button
+            android:text="DESCARGAR DECLARACIÓN DE RENTA"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/downloadBtn"
+            android:textColor="#ff033076"
+            android:layout_centerHorizontal="true"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:background="@drawable/button_border"
+            android:padding="5dip" />
+    </LinearLayout>
 </LinearLayout>

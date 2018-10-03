@@ -9,21 +9,56 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using FrontMobileApithon.Models;
+using Newtonsoft.Json;
 
 namespace FrontMobileApithon.Droid.Implementations
 {
     [Activity(Label = "HomeActivity")]
     public class HomeActivity : Activity
     {
-        bool isUpdated = true;
+        #region Constructor
+        public HomeActivity()
+        {
+            /* ApiService = new ApiConsumer();*/
+            //CheckConnection = new CheckConnection();
+            Init(this);
+        }
+        #endregion
+
+        #region Singleton
+        static HomeActivity instance = null;
+
+        public static HomeActivity GetInstance()
+        {
+            if (instance == null)
+            {
+                return instance = new HomeActivity();
+            }
+
+            return instance;
+        }
+
+        static void Init(HomeActivity context)
+        {
+            instance = context;
+        }
+        #endregion
+
+        public Models.Responses.Client.getClientResponse clientInfo { get; set; }
+        public string access_token  { get; set; }
+
+        bool showNotification;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
-
             SetContentView(Resource.Layout.home);
+            clientInfo = JsonConvert.DeserializeObject<Models.Responses.Client.getClientResponse>(
+            this.Intent.GetStringExtra("ClientInfo"));
+            access_token = this.Intent.GetStringExtra("token");
 
             TextView grattings, info;
             ImageView notification = FindViewById<ImageView>(Resource.Id.notification);
@@ -31,7 +66,7 @@ namespace FrontMobileApithon.Droid.Implementations
             notification.Click += Notification_Click;
             
             grattings = FindViewById<TextView>(Resource.Id.grattings);
-            grattings.Text = "Bienvenido" + " " + "Nombre de individuo";
+            grattings.Text = "Hola" + " " + clientInfo.data[0].fullName;
 
             info = FindViewById<TextView>(Resource.Id.info);
             info.Text = "¿Sabías que la declaración de renta es un informe, de aquellos contribuyentes considerados como personas naturales, empleados o independientes, que se le presenta a la DIAN; que detalla la situación financiera de los colombianos?";
@@ -42,6 +77,24 @@ namespace FrontMobileApithon.Droid.Implementations
             Button closeBtn = FindViewById<Button>(Resource.Id.closeBtn);
             closeBtn.Click += CloseBtn_Click;
 
+            showNotification = clientInfo.data[0].declarationReady;
+
+            if (showNotification)
+            {
+                notification.Visibility = ViewStates.Visible;
+				Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+				AlertDialog alert = dialog.Create();
+				alert.SetTitle("Notificación");
+				alert.SetMessage("Tu declaración esta lista" + "\n" + "Descárgala tocando la notificación");
+				alert.SetButton("ACEPTAR", (c, ev) =>
+				{
+				});
+				alert.Show();
+			}
+            else
+            {
+                notification.Visibility = ViewStates.Gone;
+            }
         }
 
         private void Notification_Click(object sender, EventArgs e)
@@ -60,6 +113,7 @@ namespace FrontMobileApithon.Droid.Implementations
             {
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
+				Finish();
             });
             alert.SetButton2("CANCEL", (c, ev) => { });
             alert.Show();
@@ -67,7 +121,7 @@ namespace FrontMobileApithon.Droid.Implementations
 
         private void NextBtn_Click(object sender, EventArgs e)
         {
-            if (isUpdated)
+            if (!clientInfo.data[0].isUpdated)
             {
                 Intent intent = new Intent(this, typeof(UpdateDataActivity));
                 StartActivity(intent);
